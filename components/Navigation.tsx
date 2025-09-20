@@ -15,15 +15,16 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navItems = [
-    { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Education', href: '#education' },
-    { name: 'Projects', href: '#projects' },
-    // { name: 'SDG Impact', href: '#sdg' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
-  ]
+    const navItems = [
+      { name: 'About', href: '#about' },
+      { name: 'Experience', href: '#experience' },
+      { name: 'Education', href: '#education' },
+      { name: 'Training', href: '#training' },
+      { name: 'Projects', href: '#projects' },
+      // { name: 'SDG Impact', href: '#sdg' },
+      { name: 'Skills', href: '#skills' },
+      { name: 'Contact', href: '#contact' },
+    ]
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href)

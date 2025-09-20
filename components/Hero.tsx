@@ -12,8 +12,19 @@ const Hero = () => {
   }
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-white pt-16">
-      <div className="container-max-width section-padding">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-white pt-16 animated-bg relative">
+      <div className="floating-particles">
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+      </div>
+      <div className="container-max-width section-padding relative z-10">
         <div className="text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

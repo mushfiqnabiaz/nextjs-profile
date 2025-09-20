@@ -49,8 +49,19 @@ const SDGShowcase = () => {
   ]
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-50 to-white">
-      <div className="container-max-width section-padding">
+    <section className="py-20 bg-gradient-to-br from-primary-50 to-white animated-bg relative">
+      <div className="floating-particles">
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+      </div>
+      <div className="container-max-width section-padding relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}

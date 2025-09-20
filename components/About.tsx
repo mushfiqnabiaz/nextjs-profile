@@ -17,8 +17,19 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="container-max-width section-padding">
+    <section id="about" className="py-20 bg-white animated-bg relative">
+      <div className="floating-particles">
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+        <div className="particle"></div>
+      </div>
+      <div className="container-max-width section-padding relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}

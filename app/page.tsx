@@ -3,6 +3,7 @@ import About from '@/components/About'
 import SDGShowcase from '@/components/SDGShowcase'
 import Experience from '@/components/Experience'
 import Education from '@/components/Education'
+import TrainingCertification from '@/components/TrainingCertification'
 import Projects from '@/components/Projects'
 import SDGImpact from '@/components/SDGImpact'
 import Skills from '@/components/Skills'
@@ -17,8 +18,19 @@ export default function Home() {
           <SDGShowcase />
           
           {/* My Journey Section */}
-          <section className="py-16 bg-white">
-            <div className="container-max-width section-padding">
+          <section className="py-16 bg-white animated-bg relative">
+            <div className="floating-particles">
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+            </div>
+            <div className="container-max-width section-padding relative z-10">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                   My Journey
@@ -30,14 +42,27 @@ export default function Home() {
             </div>
           </section>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-            <Experience />
-            <Education />
-          </div>
-          
-          {/* Research Section */}
-          <section className="py-20 bg-gray-50">
-            <div className="container-max-width section-padding">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+              <Experience />
+              <Education />
+            </div>
+            
+            <TrainingCertification />
+            
+            {/* Research Section */}
+          <section className="py-20 bg-gray-50 animated-bg relative">
+            <div className="floating-particles">
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+              <div className="particle"></div>
+            </div>
+            <div className="container-max-width section-padding relative z-10">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                   Research
