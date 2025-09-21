@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Navigation from '@/components/Navigation'
+import NavigationWrapper from '@/components/NavigationWrapper'
 import StructuredData from '@/components/StructuredData'
-import Analytics from '@/components/Analytics'
+import AnalyticsWrapper from '@/components/AnalyticsWrapper'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -108,12 +108,18 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <StructuredData />
-        <Analytics />
+        <AnalyticsWrapper />
         <meta name="color-scheme" content="light" />
         <meta name="theme-color" content="#6366f1" />
+        <script 
+          src="https://platform.linkedin.com/badges/js/profile.js" 
+          async 
+          defer 
+          type="text/javascript"
+        ></script>
       </head>
       <body className={inter.className}>
-        <Navigation />
+        <NavigationWrapper />
         <main role="main">{children}</main>
       </body>
     </html>

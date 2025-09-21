@@ -7,6 +7,9 @@ const nextConfig = {
   // Enable compression for better performance
   compress: true,
   
+  // Enable standalone output for Docker
+  output: 'standalone',
+  
   // Optimize images
   images: {
     remotePatterns: [
@@ -25,7 +28,6 @@ const nextConfig = {
   
   // Enable experimental features for better performance
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
   

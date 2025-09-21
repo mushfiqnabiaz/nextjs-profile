@@ -1,25 +1,11 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowLeft, ExternalLink, Leaf, Globe, Zap, Wifi, Thermometer } from 'lucide-react'
-import { StructuredData } from '@/components/StructuredData'
+import StructuredData from '@/components/StructuredData'
+import Footer from '@/components/Footer'
 
 // Project data - in a real app, this would come from a CMS or database
 const projects = [
-  {
-    slug: 'smartfarm-iot-platform',
-    title: 'SmartFarm IoT Platform',
-    category: 'Agritech',
-    description: 'Comprehensive IoT platform for precision agriculture and crop monitoring, directly supporting SDG 2 (Zero Hunger) and SDG 13 (Climate Action).',
-    image: '/api/placeholder/600/400',
-    technologies: ['IoT', 'React', 'Node.js', 'AWS', 'Machine Learning', 'Python', 'TensorFlow', 'MongoDB'],
-    sdgGoals: ['SDG 2', 'SDG 13'],
-    impact: 'Serving 25K+ farmers with 30% increase in crop yield and 25% reduction in water usage',
-    icon: Leaf,
-    color: 'bg-green-50 text-green-600',
-    links: {
-      live: '#'
-    }
-  },
   {
     slug: 'iot-based-water-quality-monitoring-smart-peripheral-control',
     title: 'IoT-Based Water Quality Monitoring & Smart Peripheral Control',
@@ -32,22 +18,7 @@ const projects = [
     icon: Globe,
     color: 'bg-blue-50 text-blue-600',
     links: {
-      live: '#'
-    }
-  },
-  {
-    slug: 'energyefficiency-saas-platform',
-    title: 'EnergyEfficiency SaaS Platform',
-    category: 'SaaS',
-    description: 'Enterprise SaaS platform for energy management and efficiency optimization in agricultural and industrial settings, contributing to SDG 7 (Clean Energy) and SDG 13 (Climate Action).',
-    image: '/api/placeholder/600/400',
-    technologies: ['React', 'TypeScript', 'PostgreSQL', 'Docker', 'Kubernetes', 'Python', 'TensorFlow', 'AWS'],
-    sdgGoals: ['SDG 7', 'SDG 13'],
-    impact: 'Enabled 200+ agricultural facilities to reduce energy consumption by 30% on average',
-    icon: Zap,
-    color: 'bg-yellow-50 text-yellow-600',
-    links: {
-      live: '#'
+      live: 'https://play.google.com/store/apps/details?id=com.aqualinkbd.aquaculture_wms&hl=en'
     }
   },
   {
@@ -146,47 +117,11 @@ export const metadata: Metadata = {
   },
 }
 
-// Generate structured data for SEO
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Projects Portfolio",
-  "description": "A comprehensive collection of IoT, SaaS, and Agritech projects led by Mushfiqur Rahaman, each contributing to UN Sustainable Development Goals.",
-  "url": "https://meetmushfiq.com/projects",
-  "mainEntity": {
-    "@type": "ItemList",
-    "numberOfItems": projects.length,
-    "itemListElement": projects.map((project, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "item": {
-        "@type": "CreativeWork",
-        "name": project.title,
-        "description": project.description,
-        "url": `https://meetmushfiq.com/projects/${project.slug}`,
-        "image": project.image,
-        "about": project.sdgGoals,
-        "genre": project.category
-      }
-    }))
-  },
-  "author": {
-    "@type": "Person",
-    "name": "Mushfiqur Rahaman",
-    "url": "https://meetmushfiq.com",
-    "jobTitle": "Technical Product Manager"
-  },
-  "publisher": {
-    "@type": "Person",
-    "name": "Mushfiqur Rahaman",
-    "url": "https://meetmushfiq.com"
-  }
-}
 
 export default function ProjectsPage() {
   return (
     <>
-      <StructuredData data={structuredData} />
+      <StructuredData />
       <div className="min-h-screen bg-gray-50 pt-20">
         <div className="container-max-width section-padding">
           {/* Back Button */}
@@ -206,7 +141,7 @@ export default function ProjectsPage() {
               Featured Projects
             </h1>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              A comprehensive showcase of impactful products I've led across IoT, SaaS, Healthtech, 
+              A comprehensive showcase of impactful products I&apos;ve led across IoT, SaaS, Healthtech, 
               and Agrotech domains, each contributing to specific UN Sustainable Development Goals.
             </p>
           </div>
@@ -293,6 +228,7 @@ export default function ProjectsPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

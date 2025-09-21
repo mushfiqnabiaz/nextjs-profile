@@ -11,26 +11,6 @@ const Projects = () => {
 
   const projects = [
     {
-      title: "SmartFarm IoT Platform",
-      category: "Agritech",
-      description: "Comprehensive IoT platform for precision agriculture and crop monitoring, directly supporting SDG 2 (Zero Hunger) and SDG 13 (Climate Action).",
-      image: "/api/placeholder/600/400",
-      technologies: ["IoT", "React", "Node.js", "AWS", "Machine Learning"],
-      sdgGoals: ["SDG 2", "SDG 13"],
-      impact: "Serving 25K+ farmers with 30% increase in crop yield and 25% reduction in water usage",
-      features: [
-        "Real-time soil monitoring",
-        "Weather prediction",
-        "Crop health analysis",
-        "Resource optimization"
-      ],
-      icon: Leaf,
-      color: "bg-green-50 text-green-600",
-      links: {
-        live: "#"
-      }
-    },
-    {
       title: "IoT-Based Water Quality Monitoring & Smart Peripheral Control",
       category: "Aquatech",
       description: "Comprehensive IoT solution for continuous water quality monitoring (pH, DO, Ammonia, Temperature) with automated aerator and pump control. Deployed across 8 districts, impacting 30 farmers with 20% energy savings and improved yield rates.",
@@ -49,27 +29,7 @@ const Projects = () => {
       icon: Globe,
       color: "bg-blue-50 text-blue-600",
       links: {
-        live: "#"
-      }
-    },
-    {
-      title: "EnergyEfficiency SaaS Platform",
-      category: "SaaS",
-      description: "Enterprise SaaS platform for energy management and efficiency optimization in agricultural and industrial settings, contributing to SDG 7 (Clean Energy) and SDG 13 (Climate Action).",
-      image: "/api/placeholder/600/400",
-      technologies: ["React", "TypeScript", "PostgreSQL", "Docker", "Kubernetes"],
-      sdgGoals: ["SDG 7", "SDG 13"],
-      impact: "Enabled 200+ agricultural facilities to reduce energy consumption by 30% on average",
-      features: [
-        "Energy consumption tracking",
-        "Efficiency optimization",
-        "Renewable energy integration",
-        "Sustainability reporting"
-      ],
-      icon: Zap,
-      color: "bg-yellow-50 text-yellow-600",
-      links: {
-        live: "#"
+        live: "https://play.google.com/store/apps/details?id=com.aqualinkbd.aquaculture_wms&hl=en"
       }
     },
     {
@@ -133,7 +93,7 @@ const Projects = () => {
             Featured Projects
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            A showcase of impactful products I've led across IoT, SaaS, Healthtech, 
+            A showcase of impactful products I&apos;ve led across IoT, SaaS, Healthtech, 
             and Agrotech domains, each contributing to specific UN Sustainable Development Goals.
           </p>
         </motion.div>
@@ -232,6 +192,30 @@ const Projects = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* View More Projects Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center mt-12"
+        >
+          <a
+            href="/projects"
+            className="inline-flex items-center space-x-2 bg-primary-600 text-white px-8 py-3 rounded-lg hover:bg-primary-700 transition-colors duration-200 font-medium"
+            onClick={() => {
+              if (typeof window !== 'undefined' && window.trackEvent) {
+                window.trackEvent('view_more_projects_clicked', {
+                  section: 'projects',
+                  source: 'homepage'
+                })
+              }
+            }}
+          >
+            <span>View More Projects</span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
+        </motion.div>
       </div>
     </section>
   )

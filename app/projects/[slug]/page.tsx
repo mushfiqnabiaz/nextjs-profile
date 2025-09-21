@@ -2,59 +2,10 @@ import { notFound } from 'next/navigation'
 import { ArrowLeft, ExternalLink, Users, Target, Zap, Globe, Leaf, Wifi, Thermometer } from 'lucide-react'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import Footer from '@/components/Footer'
 
 // Project data - in a real app, this would come from a CMS or database
 const projects = [
-  {
-    slug: 'smartfarm-iot-platform',
-    title: 'SmartFarm IoT Platform',
-    category: 'Agritech',
-    description: 'Comprehensive IoT platform for precision agriculture and crop monitoring, directly supporting SDG 2 (Zero Hunger) and SDG 13 (Climate Action).',
-    fullDescription: `SmartFarm IoT Platform revolutionizes agricultural practices by providing real-time monitoring and intelligent automation for modern farming operations. This comprehensive solution addresses the critical challenges faced by farmers in optimizing crop yields while minimizing resource consumption and environmental impact.
-
-The platform integrates advanced IoT sensors, machine learning algorithms, and automated control systems to create a smart farming ecosystem that adapts to changing environmental conditions and crop requirements.`,
-    image: '/api/placeholder/800/400',
-    technologies: ['IoT', 'React', 'Node.js', 'AWS', 'Machine Learning', 'Python', 'TensorFlow', 'MongoDB'],
-    sdgGoals: ['SDG 2', 'SDG 13'],
-    impact: 'Serving 25K+ farmers with 30% increase in crop yield and 25% reduction in water usage',
-    features: [
-      'Real-time soil monitoring with pH, moisture, and nutrient level tracking',
-      'Advanced weather prediction and climate adaptation algorithms',
-      'Automated irrigation and fertilization systems',
-      'Crop health analysis using computer vision and AI',
-      'Resource optimization through predictive analytics',
-      'Mobile app for remote monitoring and control',
-      'Integration with existing farm management systems'
-    ],
-    challenges: [
-      'Integrating multiple sensor types and data formats',
-      'Ensuring reliable connectivity in rural areas',
-      'Developing accurate prediction models for diverse crop types',
-      'Managing large-scale data processing and storage',
-      'Creating user-friendly interfaces for non-technical farmers'
-    ],
-    solutions: [
-      'Implemented robust data normalization and validation pipelines',
-      'Deployed hybrid connectivity solutions (WiFi, LoRaWAN, cellular)',
-      'Developed crop-specific machine learning models with 95% accuracy',
-      'Built scalable cloud infrastructure with edge computing capabilities',
-      'Created intuitive mobile-first design with offline functionality'
-    ],
-    results: [
-      '30% increase in crop yield across all participating farms',
-      '25% reduction in water usage through smart irrigation',
-      '40% decrease in fertilizer waste and environmental impact',
-      '60% reduction in manual monitoring time for farmers',
-      '95% user satisfaction rate among early adopters'
-    ],
-    icon: Leaf,
-    color: 'bg-green-50 text-green-600',
-    links: {
-      live: 'https://play.google.com/store/apps/details?id=com.aqualink.polynet_greenhouse_mobile&hl=en'
-    },
-    teamSize: '8 members',
-    role: 'Product Manager & Technical Lead'
-  },
   {
     slug: 'iot-based-water-quality-monitoring-smart-peripheral-control',
     title: 'IoT-Based Water Quality Monitoring & Smart Peripheral Control',
@@ -101,7 +52,7 @@ The system combines advanced sensor technology with intelligent automation to ma
     icon: Globe,
     color: 'bg-blue-50 text-blue-600',
     links: {
-      live: '#',
+      live: 'https://play.google.com/store/apps/details?id=com.aqualinkbd.aquaculture_wms&hl=en',
     },
     teamSize: '12 members',
     role: 'Product Manager & Technical Lead'
@@ -450,7 +401,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 className="flex items-center space-x-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors duration-200"
               >
                 <ExternalLink className="w-4 h-4" />
-                <span>{project.slug === 'polynet-greenhouse-monitor' ? 'Download App' : 'Live Demo'}</span>
+                <span>{(project.slug === 'polynet-greenhouse-monitor' || project.slug === 'iot-based-water-quality-monitoring-smart-peripheral-control') ? 'Download App' : 'Live Demo'}</span>
               </a>
             </div>
           </div>
@@ -503,6 +454,25 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium"
+              >
+                <ExternalLink className="w-5 h-5" />
+                <span>Download on Google Play</span>
+              </a>
+            </div>
+          )}
+
+          {project.slug === 'iot-based-water-quality-monitoring-smart-peripheral-control' && (
+            <div className="bg-blue-50 p-6 rounded-lg mt-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Download the App</h3>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                The Aquaculture WMS (Water Management System) is now available on Google Play Store. Download the app to experience 
+                real-time water quality monitoring and smart peripheral control features for your aquaculture operations.
+              </p>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.aqualinkbd.aquaculture_wms&hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium"
               >
                 <ExternalLink className="w-5 h-5" />
                 <span>Download on Google Play</span>
@@ -585,6 +555,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
     </>
   )

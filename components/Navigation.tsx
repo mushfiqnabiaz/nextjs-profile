@@ -1,13 +1,15 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Menu, X, ChevronDown, Briefcase, GraduationCap, Award, BookOpen } from 'lucide-react'
+import { Menu, X, ChevronDown, Briefcase, GraduationCap, Award, BookOpen, Target } from 'lucide-react'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [journeyDropdownOpen, setJourneyDropdownOpen] = useState(false)
+  const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false)
   const journeyDropdownRef = useRef<HTMLDivElement>(null)
+  const projectsDropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,22 +19,25 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close journey dropdown when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (journeyDropdownRef.current && !journeyDropdownRef.current.contains(event.target as Node)) {
         setJourneyDropdownOpen(false)
       }
+      if (projectsDropdownRef.current && !projectsDropdownRef.current.contains(event.target as Node)) {
+        setProjectsDropdownOpen(false)
+      }
     }
 
-    if (journeyDropdownOpen) {
+    if (journeyDropdownOpen || projectsDropdownOpen) {
       document.addEventListener('mousedown', handleClickOutside)
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [journeyDropdownOpen])
+  }, [journeyDropdownOpen, projectsDropdownOpen])
 
       const navItems = [
         { name: 'Home', href: '/' },
@@ -49,6 +54,10 @@ const Navigation = () => {
         { name: 'Education', href: '#education', icon: GraduationCap },
         { name: 'Training & Certifications', href: '#training', icon: Award },
         { name: 'Research', href: '#research', icon: BookOpen },
+      ]
+
+      const projectSections = [
+        { name: 'All Projects', href: '/projects', icon: Target },
       ]
 
     const scrollToSection = (href: string) => {
@@ -80,6 +89,7 @@ const Navigation = () => {
       }
       setIsOpen(false)
       setJourneyDropdownOpen(false)
+      setProjectsDropdownOpen(false)
     }
 
   return (
@@ -162,8 +172,41 @@ const Navigation = () => {
                   )}
                 </div>
                 
+                {/* Projects Dropdown */}
+                <div className="relative" ref={projectsDropdownRef}>
+                  <button
+                    onClick={() => setProjectsDropdownOpen(!projectsDropdownOpen)}
+                    className="flex items-center text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                  >
+                    Projects
+                    <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
+                      projectsDropdownOpen ? 'rotate-180' : ''
+                    }`} />
+                  </button>
+
+                  {projectsDropdownOpen && (
+                    <div className="absolute top-full left-0 mt-1 w-72 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                      <div className="py-2">
+                        {projectSections.map((section) => {
+                          const IconComponent = section.icon
+                          return (
+                            <button
+                              key={section.href}
+                              onClick={() => scrollToSection(section.href)}
+                              className="w-full flex items-center px-4 py-3 text-left hover:bg-gray-50 transition-colors duration-200"
+                            >
+                              <IconComponent className="w-4 h-4 text-primary-600 mr-3" />
+                              <span className="text-gray-900 text-sm">{section.name}</span>
+                            </button>
+                          )
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
+                
                 {/* Rest of navigation items */}
-                {navItems.slice(2).map((item) => (
+                {navItems.slice(3).map((item) => (
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
@@ -226,8 +269,28 @@ const Navigation = () => {
                   })}
                 </div>
                 
+                {/* Projects Section in Mobile */}
+                <div className="border-t border-gray-200 pt-2 mt-2">
+                  <div className="px-3 py-2 text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                    Projects
+                  </div>
+                  {projectSections.map((section) => {
+                    const IconComponent = section.icon
+                    return (
+                      <button
+                        key={section.href}
+                        onClick={() => scrollToSection(section.href)}
+                        className="flex items-center text-gray-700 hover:text-primary-600 px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
+                      >
+                        <IconComponent className="w-4 h-4 text-primary-600 mr-3" />
+                        {section.name}
+                      </button>
+                    )
+                  })}
+                </div>
+                
                 {/* Rest of navigation items */}
-                {navItems.slice(2).map((item) => (
+                {navItems.slice(3).map((item) => (
                   <button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}

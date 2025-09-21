@@ -2,16 +2,43 @@
 
 import { motion } from 'framer-motion'
 import { Heart, ArrowUp } from 'lucide-react'
+import { useEffect } from 'react'
+
+// Extend Window interface for LinkedIn
+declare global {
+  interface Window {
+    LI: {
+      parse: () => void
+    }
+  }
+}
 
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  useEffect(() => {
+    // Initialize LinkedIn badge after component mounts
+    const initLinkedInBadge = () => {
+      if (typeof window !== 'undefined' && window.LI) {
+        window.LI.parse()
+      }
+    }
+
+    // Try to initialize immediately
+    initLinkedInBadge()
+
+    // Also try after a short delay to ensure script is loaded
+    const timer = setTimeout(initLinkedInBadge, 1000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="container-max-width section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
             <h3 className="text-xl font-bold mb-4">Mushfiqur Rahaman</h3>
             <p className="text-gray-400 leading-relaxed">
@@ -65,6 +92,27 @@ const Footer = () => {
               <li>IoT & Embedded Systems</li>
               <li>SDG-Aligned Products</li>
             </ul>
+          </div>
+          
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Connect with me</h4>
+            <div 
+              className="badge-base LI-profile-badge" 
+              data-locale="en_US" 
+              data-size="medium" 
+              data-theme="light" 
+              data-type="VERTICAL" 
+              data-vanity="mushfiqur-r" 
+              data-version="v1"
+            >
+              <a 
+                className="badge-base__link LI-simple-link" 
+                href="https://bd.linkedin.com/in/mushfiqur-r?trk=profile-badge"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+              </a>
+            </div>
           </div>
         </div>
         

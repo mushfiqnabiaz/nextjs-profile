@@ -9,7 +9,7 @@ export default function ProjectNotFound() {
           <h1 className="text-6xl font-bold text-primary-600 mb-4">404</h1>
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Project Not Found</h2>
           <p className="text-gray-600 mb-8">
-            Sorry, we couldn't find the project you're looking for. It might have been moved or you entered the wrong URL.
+            Sorry, we couldn&apos;t find the project you&apos;re looking for. It might have been moved or you entered the wrong URL.
           </p>
         </div>
         

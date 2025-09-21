@@ -25,7 +25,7 @@ export default function Error({
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Something went wrong!</h1>
           <p className="text-gray-600 mb-6">
-            We encountered an unexpected error. This has been logged and we'll look into it.
+            We encountered an unexpected error. This has been logged and we&apos;ll look into it.
           </p>
           {error.digest && (
             <p className="text-sm text-gray-500 mb-4">

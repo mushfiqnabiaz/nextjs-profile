@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Calendar, Clock, User, ArrowLeft, Tag } from 'lucide-react'
 import ShareButton from '@/components/ShareButton'
+import Footer from '@/components/Footer'
 
 // Sample blog posts data - in a real app, this would come from a CMS or database
 const blogPosts = [
@@ -772,6 +773,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
     </>
   )

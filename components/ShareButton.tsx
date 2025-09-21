@@ -100,7 +100,7 @@ const ShareButton = ({ title, url, description }: ShareButtonProps) => {
               <h3 className="text-sm font-semibold text-gray-900 mb-3">Share this article</h3>
               
               {/* Native Share (Mobile) */}
-              {typeof window !== 'undefined' && navigator.share && (
+              {typeof window !== 'undefined' && 'share' in navigator && (
                 <button
                   onClick={handleNativeShare}
                   className="w-full flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors duration-200 mb-2"

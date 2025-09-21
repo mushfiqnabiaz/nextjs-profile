@@ -41,7 +41,7 @@ const About = () => {
               About Me
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto" itemProp="description">
-              I'm a passionate Technical Product Manager with a unique focus on building 
+              I&apos;m a passionate Technical Product Manager with a unique focus on building 
               practical, sustainable solutions for agriculture and aquaculture that contribute 
               to the United Nations Sustainable Development Goals. With over 5 years of experience 
               in IoT, SaaS, ERP systems, and embedded systems, I specialize in creating 
@@ -60,7 +60,7 @@ const About = () => {
                 My Mission
               </h3>
               <p className="text-gray-700 leading-relaxed mb-6">
-                I believe technology has the power to solve the world's most pressing challenges. 
+                I believe technology has the power to solve the world&apos;s most pressing challenges. 
                 As a Product Manager with a BSc in Computer Science from Daffodil Institute of IT, 
                 I focus on creating practical, sustainable solutions that not only drive business 
                 success but also contribute to a more sustainable and equitable future.

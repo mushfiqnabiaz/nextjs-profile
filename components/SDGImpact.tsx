@@ -157,13 +157,13 @@ const SDGImpact = () => {
           <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-8 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">My Mission</h3>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              I believe that technology has the power to solve the world's most pressing challenges. 
-              As a Technical Product Manager, I'm committed to building products that not only drive 
+              I believe that technology has the power to solve the world&apos;s most pressing challenges. 
+              As a Technical Product Manager, I&apos;m committed to building products that not only drive 
               business success but also contribute to a more sustainable, equitable, and healthy world.
             </p>
             <p className="text-gray-600 leading-relaxed">
               Every product decision I make is evaluated through the lens of its potential impact on 
-              the UN Sustainable Development Goals, ensuring that innovation serves humanity's greatest needs.
+              the UN Sustainable Development Goals, ensuring that innovation serves humanity&apos;s greatest needs.
             </p>
           </div>
         </motion.div>

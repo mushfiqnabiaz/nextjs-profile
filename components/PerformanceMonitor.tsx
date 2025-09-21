@@ -2,6 +2,17 @@
 
 import { useEffect } from 'react'
 
+// Extend Window interface for gtag and performance
+declare global {
+  interface Window {
+    gtag: (command: string, targetId: string, config?: any) => void
+  }
+  
+  interface PerformanceEntry {
+    processingStart?: number
+  }
+}
+
 const PerformanceMonitor = () => {
   useEffect(() => {
     // Web Vitals monitoring
@@ -42,11 +53,13 @@ const PerformanceMonitor = () => {
       new PerformanceObserver((entryList) => {
         const entries = entryList.getEntries()
         entries.forEach((entry) => {
-          reportWebVitals({
-            name: 'FID',
-            value: entry.processingStart - entry.startTime,
-            id: 'fid'
-          })
+          if (entry.processingStart !== undefined) {
+            reportWebVitals({
+              name: 'FID',
+              value: entry.processingStart - entry.startTime,
+              id: 'fid'
+            })
+          }
         })
       }).observe({ entryTypes: ['first-input'] })
 

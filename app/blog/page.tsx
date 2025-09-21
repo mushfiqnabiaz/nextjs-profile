@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { Calendar, Clock, User, ArrowRight, Tag } from 'lucide-react'
 import ShareButton from '@/components/ShareButton'
+import Footer from '@/components/Footer'
 import { notFound } from 'next/navigation'
 
 export const metadata: Metadata = {
@@ -728,6 +729,7 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
     </>
   )

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { Mail, Phone, MapPin, Linkedin, Github, Twitter, Send, CheckCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle, Facebook, Instagram } from 'lucide-react'
 
 const Contact = () => {
   const ref = useRef(null)
@@ -85,21 +85,27 @@ const Contact = () => {
     {
       icon: Linkedin,
       name: "LinkedIn",
-      url: "https://linkedin.com/in/mushfiqur-rahaman",
+      url: "https://www.linkedin.com/in/mushfiqur-r/",
       color: "hover:text-blue-600"
     },
     {
       icon: Github,
       name: "GitHub",
-      url: "https://github.com/mushfiqur-rahaman",
+      url: "https://github.com/mushfiqnabiaz",
       color: "hover:text-gray-800"
     },
     {
-      icon: Twitter,
-      name: "Twitter",
-      url: "https://twitter.com/mushfiqur_pm",
-      color: "hover:text-blue-400"
-    }
+      icon: Facebook,
+      name: "Facebook",
+      url: "https://www.facebook.com/nabiazr",
+      color: "hover:text-blue-600"
+    },
+    {
+      icon: Instagram,
+      name: "Instagram",
+      url: "https://www.instagram.com/nabiaz_r/",
+      color: "hover:text-pink-600"
+    },
   ]
 
   return (
@@ -113,11 +119,11 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Let's Connect
+            Let&apos;s Connect
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            I'm always interested in discussing new opportunities, innovative projects, 
-            and collaborations that align with sustainable development goals. Let's build something meaningful together.
+            I&apos;m always interested in discussing new opportunities, innovative projects, 
+            and collaborations that align with sustainable development goals. Let&apos;s build something meaningful together.
           </p>
         </motion.div>
 

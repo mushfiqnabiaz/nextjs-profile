@@ -26,7 +26,7 @@ const Hero = () => {
     }, 5000) // Change every 5 seconds
 
     return () => clearInterval(interval)
-  }, [])
+  }, [positions.length])
 
   const scrollToAbout = () => {
     const element = document.querySelector('#about')
