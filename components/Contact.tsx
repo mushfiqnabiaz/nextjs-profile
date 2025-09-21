@@ -18,8 +18,37 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Track form submission with PostHog
+    if (typeof window !== 'undefined' && window.trackEvent) {
+      window.trackEvent('contact_form_submitted', {
+        form_type: 'contact',
+        has_name: !!formData.name,
+        has_email: !!formData.email,
+        has_subject: !!formData.subject,
+        has_message: !!formData.message,
+        message_length: formData.message.length,
+        user_agent: navigator.userAgent,
+        timestamp: new Date().toISOString()
+      })
+    }
+
+    // Also send a manual PostHog event
+    if (typeof window !== 'undefined' && window.posthog) {
+      window.posthog.capture('portfolio_contact_form', {
+        name_provided: !!formData.name,
+        email_provided: !!formData.email,
+        subject_provided: !!formData.subject,
+        message_length: formData.message.length,
+        form_completion_time: Date.now(),
+        source: 'portfolio_website'
+      })
+    }
+    
     // Handle form submission here
     console.log('Form submitted:', formData)
+    alert('Thank you for your message! I will get back to you soon.')
+    setFormData({ name: '', email: '', subject: '', message: '' })
     setIsSubmitted(true)
     setTimeout(() => setIsSubmitted(false), 3000)
   }
@@ -35,8 +64,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "mushfiqur.rahaman@example.com",
-      link: "mailto:mushfiqur.rahaman@example.com"
+      value: "hello@meetmushfiq.com",
+      link: "mailto:hello@meetmushfiq.com"
     },
     {
       icon: Phone,

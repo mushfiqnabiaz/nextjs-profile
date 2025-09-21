@@ -12,13 +12,13 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" id="main-content">
       <Hero />
       <About />
           <SDGShowcase />
           
-          {/* My Journey Section */}
-          <section className="py-16 bg-white animated-bg relative">
+            {/* My Journey Section */}
+            <section id="journey" className="py-16 bg-white animated-bg relative">
             <div className="floating-particles">
               <div className="particle"></div>
               <div className="particle"></div>
@@ -50,7 +50,7 @@ export default function Home() {
             <TrainingCertification />
             
             {/* Research Section */}
-          <section className="py-20 bg-gray-50 animated-bg relative">
+          <section id="research" className="py-20 bg-gray-50 animated-bg relative">
             <div className="floating-particles">
               <div className="particle"></div>
               <div className="particle"></div>

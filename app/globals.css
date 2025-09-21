@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* Fonts are now loaded via Next.js font optimization */
 
 @layer base {
   html {
@@ -26,11 +26,74 @@
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600 bg-clip-text text-transparent;
   }
   
   .card-hover {
     @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
+  }
+  
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+  
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  /* Logo Animation */
+  .logo-animation {
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .logo-animation:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+
+  .logo-underline {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .logo-animation:hover .logo-underline {
+    transform: scaleX(1);
+  }
+
+  /* Logo pulse animation */
+  .logo-animation::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(16, 185, 129, 0.1), rgba(20, 184, 166, 0.1), rgba(8, 145, 178, 0.1));
+    border-radius: 8px;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+    z-index: -1;
+  }
+
+  .logo-animation:hover::before {
+    transform: translate(-50%, -50%) scale(1.1);
   }
 }
 

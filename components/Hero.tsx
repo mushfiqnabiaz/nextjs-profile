@@ -8,6 +8,15 @@ const Hero = () => {
     const element = document.querySelector('#about')
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
+      
+      // Track CTA clicks
+      if (typeof window !== 'undefined' && window.trackEvent) {
+        window.trackEvent('hero_cta_clicked', {
+          cta_type: 'learn_more',
+          cta_text: 'Learn More About Me',
+          section: 'hero'
+        })
+      }
     }
   }
 
@@ -26,19 +35,22 @@ const Hero = () => {
       </div>
       <div className="container-max-width section-padding relative z-10">
         <div className="text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-8"
-          >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
-              Mushfiqur Rahaman
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8">
-              <span className="gradient-text font-semibold">Technical Product Manager</span>
-            </p>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-8"
+            >
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
+                Mushfiqur Rahaman
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-600 mb-8">
+                <span className="gradient-text font-semibold">Technical Product Manager</span>
+              </p>
+              <p className="text-sm text-gray-500 mb-4">
+                Agritech • Aquatech • Energy Efficiency • IoT • SaaS • SDG-Aligned Products
+              </p>
+            </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -96,27 +108,36 @@ const Hero = () => {
             >
               Learn More About Me
             </button>
-            <a
-              href="#contact"
-              className="border border-primary-600 text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors duration-200"
-            >
-              Get In Touch
-            </a>
+              <a
+                href="#contact"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && window.trackEvent) {
+                    window.trackEvent('hero_cta_clicked', {
+                      cta_type: 'contact',
+                      cta_text: 'Get In Touch',
+                      section: 'hero'
+                    })
+                  }
+                }}
+                className="border border-primary-600 text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors duration-200"
+              >
+                Get In Touch
+              </a>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="mt-16"
-          >
-            <button
-              onClick={scrollToAbout}
-              className="text-gray-400 hover:text-primary-600 transition-colors duration-200"
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="mt-16"
             >
-              <ArrowDown className="w-6 h-6 mx-auto animate-bounce" />
-            </button>
-          </motion.div>
+              <button
+                onClick={scrollToAbout}
+                className="text-gray-400 hover:text-primary-600 transition-colors duration-200"
+              >
+                <ArrowDown className="w-6 h-6 mx-auto animate-bounce" />
+              </button>
+            </motion.div>
         </div>
       </div>
     </section>

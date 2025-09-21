@@ -98,7 +98,7 @@ const Experience = () => {
   ]
 
   return (
-    <section id="experience" className="py-20 bg-gray-50 lg:border-r border-gray-200">
+    <section id="experience" className="py-20 bg-gray-50 lg:border-r border-gray-200" itemScope itemType="https://schema.org/Person">
       <div className="section-padding">
         <motion.div
           ref={ref}
@@ -111,8 +111,9 @@ const Experience = () => {
             Professional Experience
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            A track record of building impactful products across IoT, SaaS, Healthtech, 
-            and Agrotech domains with a focus on sustainable development goals.
+            A track record of building impactful products across IoT, SaaS, Agritech, 
+            and Aquatech domains with a focus on sustainable development goals and 
+            cross-functional team leadership.
           </p>
         </motion.div>
 
@@ -153,16 +154,28 @@ const Experience = () => {
                       </div>
                     </div>
                   </div>
-                  <button
-                    onClick={() => setExpandedCard(expandedCard === index ? null : index)}
-                    className={`ml-4 p-2 rounded-lg transition-all duration-300 ${
-                      expandedCard === index 
-                        ? 'bg-primary-600 text-white shadow-lg transform scale-110' 
-                        : 'bg-primary-100 text-primary-600 hover:bg-primary-600 hover:text-white hover:shadow-lg hover:transform hover:scale-110'
-                    }`}
-                  >
-                    <Info className="w-5 h-5" />
-                  </button>
+                    <button
+                      onClick={() => {
+                        setExpandedCard(expandedCard === index ? null : index)
+                        
+                        // Track experience card interactions
+                        if (typeof window !== 'undefined' && window.trackEvent) {
+                          window.trackEvent('experience_card_interaction', {
+                            action: expandedCard === index ? 'close' : 'expand',
+                            company: exp.company,
+                            position: exp.title,
+                            section: 'experience'
+                          })
+                        }
+                      }}
+                      className={`ml-4 p-2 rounded-lg transition-all duration-300 ${
+                        expandedCard === index 
+                          ? 'bg-primary-600 text-white shadow-lg transform scale-110' 
+                          : 'bg-primary-100 text-primary-600 hover:bg-primary-600 hover:text-white hover:shadow-lg hover:transform hover:scale-110'
+                      }`}
+                    >
+                      <Info className="w-5 h-5" />
+                    </button>
                 </div>
               </motion.div>
 

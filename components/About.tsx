@@ -17,7 +17,7 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="py-20 bg-white animated-bg relative">
+    <section id="about" className="py-20 bg-white animated-bg relative" itemScope itemType="https://schema.org/Person">
       <div className="floating-particles">
         <div className="particle"></div>
         <div className="particle"></div>
@@ -37,14 +37,16 @@ const About = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            About Me
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            I'm a passionate Product Manager with a unique focus on building 
-            practical, sustainable solutions for agriculture and aquaculture that contribute 
-            to the United Nations Sustainable Development Goals.
-          </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              About Me
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto" itemProp="description">
+              I'm a passionate Technical Product Manager with a unique focus on building 
+              practical, sustainable solutions for agriculture and aquaculture that contribute 
+              to the United Nations Sustainable Development Goals. With over 5 years of experience 
+              in IoT, SaaS, ERP systems, and embedded systems, I specialize in creating 
+              SDG-aligned products that drive both business success and positive environmental impact.
+            </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
