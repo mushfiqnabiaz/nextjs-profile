@@ -186,7 +186,7 @@ const Experience = () => {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: -20, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="expanded-details absolute top-full left-0 right-0 z-10 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 p-6"
+                  className="expanded-details absolute top-full left-0 right-0 z-50 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 p-6"
                 >
                   <div className="flex justify-between items-start mb-4">
                     <h4 className="text-lg font-semibold text-gray-900">Detailed Information</h4>
