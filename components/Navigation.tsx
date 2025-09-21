@@ -103,10 +103,10 @@ const Navigation = () => {
               onClick={() => scrollToSection('/')}
               className="relative focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 rounded-lg"
             >
-              <span className="text-2xl font-bold gradient-text logo-animation">
-                Mushfiq
-              </span>
-              <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600 logo-underline"></div>
+        <span className="text-4xl font-bold text-gray-900 logo-animation signature-logo typewriter-text" style={{ transform: 'rotate(-2deg)' }}>
+          Mushfiq
+        </span>
+        <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gray-900 logo-underline"></div>
             </button>
           </div>
 

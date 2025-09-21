@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ExternalLink, Github, Heart, Leaf, Wifi, Stethoscope, Globe, Zap } from 'lucide-react'
+import { ExternalLink, Heart, Leaf, Wifi, Stethoscope, Globe, Zap, Thermometer } from 'lucide-react'
 
 const Projects = () => {
   const ref = useRef(null)
@@ -27,8 +27,7 @@ const Projects = () => {
       icon: Leaf,
       color: "bg-green-50 text-green-600",
       links: {
-        live: "#",
-        github: "#"
+        live: "#"
       }
     },
     {
@@ -50,8 +49,7 @@ const Projects = () => {
       icon: Globe,
       color: "bg-blue-50 text-blue-600",
       links: {
-        live: "#",
-        github: "#"
+        live: "#"
       }
     },
     {
@@ -71,8 +69,7 @@ const Projects = () => {
       icon: Zap,
       color: "bg-yellow-50 text-yellow-600",
       links: {
-        live: "#",
-        github: "#"
+        live: "#"
       }
     },
     {
@@ -94,8 +91,30 @@ const Projects = () => {
       icon: Wifi,
       color: "bg-purple-50 text-purple-600",
       links: {
-        live: "#",
-        github: "#"
+        live: "#"
+      }
+    },
+    {
+      title: "Polynet Greenhouse Monitor",
+      category: "Agritech",
+      description: "Modern IoT-powered mobile application for efficient greenhouse management. Features real-time monitoring of temperature, humidity, and soil moisture with seamless auto/manual control modes for fans, pumps, lights, and irrigation systems. Available on Google Play Store.",
+      image: "/api/placeholder/600/400",
+      technologies: ["IoT", "Real-time Monitoring", "Automated Control", "Schedule Management", "Threshold Control", "Sequence Automation"],
+      sdgGoals: ["SDG 2", "SDG 9", "SDG 12", "SDG 13"],
+      impact: "Optimized greenhouse operations with 25% improvement in crop yield and 30% reduction in resource waste through intelligent automation",
+      features: [
+        "Real-time temperature, humidity, and soil moisture monitoring",
+        "Intelligent peripheral control with schedule-based automation",
+        "Threshold-based control with customizable parameters",
+        "Sequence automation for complex operational workflows",
+        "Remote monitoring and control via mobile/web dashboard",
+        "Predictive analytics for optimal growing conditions",
+        "Energy-efficient operation with smart resource management"
+      ],
+      icon: Thermometer,
+      color: "bg-orange-50 text-orange-600",
+      links: {
+        live: "https://play.google.com/store/apps/details?id=com.aqualink.polynet_greenhouse_mobile&hl=en"
       }
     }
   ]

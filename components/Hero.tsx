@@ -2,8 +2,32 @@
 
 import { motion } from 'framer-motion'
 import { ArrowDown, Target, Zap, Users } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 const Hero = () => {
+  const [currentPositionIndex, setCurrentPositionIndex] = useState(0)
+  
+  const positions = [
+    'Technical Product Manager',
+    'Agritech Specialist',
+    'Aquatech Expert',
+    'IoT Solutions Architect',
+    'Energy Efficiency Consultant',
+    'SDG Innovation Leader',
+    'Cross-Functional Team Lead',
+    'SaaS Product Strategist'
+  ]
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPositionIndex((prevIndex) => 
+        prevIndex === positions.length - 1 ? 0 : prevIndex + 1
+      )
+    }, 5000) // Change every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [])
+
   const scrollToAbout = () => {
     const element = document.querySelector('#about')
     if (element) {
@@ -44,9 +68,18 @@ const Hero = () => {
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
                 Mushfiqur Rahaman
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8">
-                <span className="gradient-text font-semibold">Technical Product Manager</span>
-              </p>
+              <div className="text-xl md:text-2xl text-gray-600 mb-8 h-8 flex items-center justify-center">
+                <motion.span
+                  key={currentPositionIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="gradient-text font-semibold position-text"
+                >
+                  {positions[currentPositionIndex]}
+                </motion.span>
+              </div>
               <p className="text-sm text-gray-500 mb-4">
                 Agritech • Aquatech • Energy Efficiency • IoT • SaaS • SDG-Aligned Products
               </p>

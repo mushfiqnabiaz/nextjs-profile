@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { ArrowLeft, ExternalLink, Github, Calendar, Users, Target, Zap, Globe, Leaf, Wifi } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Users, Target, Zap, Globe, Leaf, Wifi, Thermometer } from 'lucide-react'
 import Link from 'next/link'
 import { Metadata } from 'next'
 
@@ -50,10 +50,8 @@ The platform integrates advanced IoT sensors, machine learning algorithms, and a
     icon: Leaf,
     color: 'bg-green-50 text-green-600',
     links: {
-      live: '#',
-      github: '#'
+      live: 'https://play.google.com/store/apps/details?id=com.aqualink.polynet_greenhouse_mobile&hl=en'
     },
-    timeline: '12 months',
     teamSize: '8 members',
     role: 'Product Manager & Technical Lead'
   },
@@ -104,9 +102,7 @@ The system combines advanced sensor technology with intelligent automation to ma
     color: 'bg-blue-50 text-blue-600',
     links: {
       live: '#',
-      github: '#'
     },
-    timeline: '18 months',
     teamSize: '12 members',
     role: 'Product Manager & Technical Lead'
   },
@@ -157,9 +153,7 @@ The platform addresses the growing need for sustainable energy practices in the 
     color: 'bg-yellow-50 text-yellow-600',
     links: {
       live: '#',
-      github: '#'
     },
-    timeline: '15 months',
     teamSize: '10 members',
     role: 'Product Manager'
   },
@@ -213,10 +207,61 @@ The system leverages cutting-edge IoT sensors, machine learning algorithms, and 
     color: 'bg-purple-50 text-purple-600',
     links: {
       live: '#',
-      github: '#'
     },
-    timeline: '18 months',
     teamSize: '12 members',
+    role: 'Product Manager & Technical Lead'
+  },
+  {
+    slug: 'polynet-greenhouse-monitor',
+    title: 'Polynet Greenhouse Monitor',
+    category: 'Agritech',
+    description: 'Modern IoT-powered mobile application for efficient greenhouse management. Features real-time monitoring of temperature, humidity, and soil moisture with seamless auto/manual control modes for fans, pumps, lights, and irrigation systems. Available on Google Play Store.',
+    fullDescription: `The Polynet Greenhouse Monitor is a modern, IoT-powered mobile application designed for efficient greenhouse management. Developed by Aqualink Bangladesh Ltd, this comprehensive solution addresses the critical challenges faced by modern greenhouse operators in maintaining optimal growing conditions while maximizing resource efficiency and crop yields.
+
+After logging in, users are directed to a user-friendly dashboard where they can select and monitor their greenhouse. The dashboard displays vital environmental data in real-time, including temperature, humidity, and soil moisture levels. Users can seamlessly switch between auto and manual modes for various peripherals such as fans, pumps, lights, and irrigation systems.
+
+The app features a side drawer where users can change the app language to suit their preferences and set custom schedules for peripherals to operate automatically, ensuring crops receive optimal care without constant supervision. Whether managing a small greenhouse or a large agricultural setup, Polynet Greenhouse offers precision, control, and convenience at your fingertips.`,
+    image: '/api/placeholder/800/400',
+    technologies: ['IoT', 'Real-time Monitoring', 'Automated Control', 'Schedule Management', 'Threshold Control', 'Sequence Automation', 'Machine Learning', 'Cloud Computing', 'Mobile App'],
+    sdgGoals: ['SDG 2', 'SDG 9', 'SDG 12', 'SDG 13'],
+    impact: 'Optimized greenhouse operations with 25% improvement in crop yield and 30% reduction in resource waste through intelligent automation',
+    features: [
+      'Real-time monitoring of temperature, humidity, and soil moisture levels',
+      'User-friendly dashboard for greenhouse selection and monitoring',
+      'Seamless switching between auto and manual control modes',
+      'Peripheral control for fans, pumps, lights, and irrigation systems',
+      'Custom schedule setting for automatic peripheral operation',
+      'Multi-language support with app language preferences',
+      'Side drawer navigation for easy access to settings and schedules',
+      'Mobile-first design optimized for greenhouse management on-the-go'
+    ],
+    challenges: [
+      'Integrating multiple sensor types and ensuring data accuracy in harsh greenhouse environments',
+      'Managing power consumption for continuous monitoring in remote locations',
+      'Developing reliable automation sequences for complex greenhouse operations',
+      'Ensuring system reliability and minimal downtime for critical growing operations',
+      'Creating user-friendly interfaces for non-technical greenhouse operators'
+    ],
+    solutions: [
+      'Developed rugged, weather-resistant sensors with self-calibration and error detection',
+      'Implemented energy-efficient edge computing with solar power and battery backup options',
+      'Created sophisticated automation engine with fail-safe mechanisms and manual override capabilities',
+      'Built redundant systems with automatic failover and remote diagnostics',
+      'Designed intuitive mobile-first interface with offline functionality and role-based access'
+    ],
+    results: [
+      '25% improvement in crop yield through optimized growing conditions',
+      '30% reduction in resource waste (water, fertilizer, energy) through intelligent automation',
+      '40% decrease in manual monitoring time for greenhouse operators',
+      '50% reduction in crop loss due to environmental stress or equipment failure',
+      '95% user satisfaction rate among greenhouse operators and managers'
+    ],
+    icon: Thermometer,
+    color: 'bg-orange-50 text-orange-600',
+    links: {
+      live: '#',
+    },
+    teamSize: '10 members',
     role: 'Product Manager & Technical Lead'
   }
 ]
@@ -405,28 +450,12 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 className="flex items-center space-x-2 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors duration-200"
               >
                 <ExternalLink className="w-4 h-4" />
-                <span>Live Demo</span>
-              </a>
-              <a
-                href={project.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 border border-gray-300 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors duration-200"
-              >
-                <Github className="w-4 h-4" />
-                <span>Code</span>
+                <span>{project.slug === 'polynet-greenhouse-monitor' ? 'Download App' : 'Live Demo'}</span>
               </a>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <div className="flex items-center space-x-3">
-              <Calendar className="w-5 h-5 text-gray-400" />
-              <div>
-                <p className="text-sm text-gray-500">Timeline</p>
-                <p className="font-semibold text-gray-900">{project.timeline}</p>
-              </div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div className="flex items-center space-x-3">
               <Users className="w-5 h-5 text-gray-400" />
               <div>
@@ -461,6 +490,25 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <h3 className="text-lg font-semibold text-gray-900 mb-3">Project Impact</h3>
             <p className="text-gray-700 leading-relaxed">{project.impact}</p>
           </div>
+
+          {project.slug === 'polynet-greenhouse-monitor' && (
+            <div className="bg-green-50 p-6 rounded-lg mt-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">Download the App</h3>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                The Polynet Greenhouse Monitor is now available on Google Play Store. Download the app to experience 
+                real-time greenhouse monitoring and control features on your mobile device.
+              </p>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.aqualink.polynet_greenhouse_mobile&hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium"
+              >
+                <ExternalLink className="w-5 h-5" />
+                <span>Download on Google Play</span>
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Project Description */}

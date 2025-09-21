@@ -14,63 +14,85 @@ export default function Home() {
   return (
     <div className="min-h-screen" id="main-content">
       <Hero />
+      
+      {/* Smooth transition section */}
+      <div className="section-divider"></div>
+      
       <About />
-          <SDGShowcase />
-          
-            {/* My Journey Section */}
-            <section id="journey" className="py-16 bg-white animated-bg relative">
-            <div className="floating-particles">
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
+      
+      {/* Elegant section separator */}
+      <div className="section-divider-gradient"></div>
+      
+      <SDGShowcase />
+      
+      {/* My Journey Section with refined styling */}
+      <section id="journey" className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        <div className="floating-particles">
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+        </div>
+        <div className="container-max-width section-padding relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-block mb-6">
+              <span className="text-sm font-semibold text-emerald-600 uppercase tracking-wider">
+                Professional Journey
+              </span>
             </div>
-            <div className="container-max-width section-padding relative z-10">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  My Journey
-                </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  A path of growth, learning, and impactful contributions across technology and sustainability
-                </p>
-              </div>
-            </div>
-          </section>
-          
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-              <Experience />
-              <Education />
-            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              My Journey
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              A path of growth, learning, and impactful contributions across technology and sustainability
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      {/* Refined grid layout with better spacing */}
+      <div className="relative">
+        <div className="section-divider-subtle"></div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <Experience />
+          <Education />
+        </div>
+      </div>
+      
+      <TrainingCertification />
             
-            <TrainingCertification />
-            
-            {/* Research Section */}
-          <section id="research" className="py-20 bg-gray-50 animated-bg relative">
-            <div className="floating-particles">
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
-              <div className="particle"></div>
+      {/* Research Section with refined styling */}
+      <section id="research" className="py-20 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+        <div className="floating-particles">
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+        </div>
+        <div className="container-max-width section-padding relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-block mb-6">
+              <span className="text-sm font-semibold text-teal-600 uppercase tracking-wider">
+                Academic Contributions
+              </span>
             </div>
-            <div className="container-max-width section-padding relative z-10">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Research
-                </h2>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                  Contributing to academic knowledge through innovative research in AI, machine learning, and social impact
-                </p>
-              </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Research
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Contributing to academic knowledge through innovative research in AI, machine learning, and social impact
+            </p>
+          </div>
               
               <div className="space-y-8">
                 {/* Research Paper 1 */}
@@ -129,9 +151,20 @@ export default function Home() {
               </div>
             </div>
           </section>
+      
+      {/* Smooth transition to projects */}
+      <div className="section-divider-gradient-reverse"></div>
+      
       <Projects />
-      {/* <SDGImpact /> */}
+      
+      {/* Subtle transition to skills */}
+      <div className="section-divider-subtle"></div>
+      
       <Skills />
+      
+      {/* Elegant transition to contact */}
+      <div className="section-divider-gradient"></div>
+      
       <Contact />
       <Footer />
     </div>
