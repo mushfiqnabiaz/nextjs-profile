@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Gift, X, Mail, Download } from 'lucide-react'
+import { Gift, X, Mail } from 'lucide-react'
 
 interface GetSurprisedProps {
   className?: string
@@ -28,26 +28,6 @@ const GetSurprised = ({
     setShowModal(true)
   }
 
-  const handleDownloadCV = () => {
-    // Track CV download from surprise modal
-    if (typeof window !== 'undefined' && window.trackEvent) {
-      window.trackEvent('cv_download_clicked', {
-        file_name: 'Mushfiqur_Rahaman_CV.pdf',
-        section: 'get_surprised_modal',
-        timestamp: new Date().toISOString()
-      })
-    }
-
-    // Create download link
-    const link = document.createElement('a')
-    link.href = '/Mushfiqur_Rahaman_CV.pdf'
-    link.download = 'Mushfiqur_Rahaman_CV.pdf'
-    link.target = '_blank'
-    link.rel = 'noopener noreferrer'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
 
   const handleEmail = () => {
     // Track email click from surprise modal
@@ -128,19 +108,11 @@ const GetSurprised = ({
                 </p>
               </div>
 
-              {/* Action Buttons */}
+              {/* Action Button */}
               <div className="space-y-3">
                 <button
-                  onClick={handleDownloadCV}
-                  className="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center space-x-2"
-                >
-                  <Download className="w-5 h-5" />
-                  <span>Download My Portfolio</span>
-                </button>
-                
-                <button
                   onClick={handleEmail}
-                  className="w-full border border-primary-600 text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-primary-50 transition-colors duration-200 flex items-center justify-center space-x-2"
+                  className="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center space-x-2"
                 >
                   <Mail className="w-5 h-5" />
                   <span>Let&apos;s Connect</span>
