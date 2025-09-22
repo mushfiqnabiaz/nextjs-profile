@@ -17,19 +17,6 @@ const Analytics = () => {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    // Initialize Google Analytics
-    if (typeof window !== 'undefined') {
-      window.dataLayer = window.dataLayer || []
-      window.gtag = function() {
-        window.dataLayer.push(arguments)
-      }
-      window.gtag('js', new Date())
-      window.gtag('config', 'G-RJJRTWHZNB', {
-        page_title: document.title,
-        page_location: window.location.href,
-      })
-    }
-
     // Initialize PostHog if not already initialized
     if (typeof window !== 'undefined' && !window.posthog) {
       posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {

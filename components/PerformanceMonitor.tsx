@@ -2,12 +2,8 @@
 
 import { useEffect } from 'react'
 
-// Extend Window interface for gtag and performance
+// Extend Window interface for performance
 declare global {
-  interface Window {
-    gtag: (command: string, targetId: string, config?: any) => void
-  }
-  
   interface PerformanceEntry {
     processingStart?: number
   }

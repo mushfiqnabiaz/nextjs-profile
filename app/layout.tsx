@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import NavigationWrapper from '@/components/NavigationWrapper'
 import StructuredData from '@/components/StructuredData'
@@ -125,7 +126,6 @@ export default function RootLayout({
         <AnalyticsWrapper />
         <meta name="color-scheme" content="light" />
         <meta name="theme-color" content="#6366f1" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJJRTWHZNB"></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5724625538341143" crossOrigin="anonymous"></script>
         <script 
           src="https://platform.linkedin.com/badges/js/profile.js" 
@@ -135,6 +135,20 @@ export default function RootLayout({
         ></script>
       </head>
       <body className={inter.className}>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-RJJRTWHZNB"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-RJJRTWHZNB');
+          `}
+        </Script>
+        
         <NavigationWrapper />
         <main role="main">{children}</main>
       </body>
