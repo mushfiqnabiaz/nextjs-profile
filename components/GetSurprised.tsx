@@ -15,6 +15,7 @@ const GetSurprised = ({
   size = 'md'
 }: GetSurprisedProps) => {
   const [showModal, setShowModal] = useState(false)
+  const [userMessage, setUserMessage] = useState('')
 
   const handleSurprise = () => {
     // Track surprise button click
@@ -35,10 +36,19 @@ const GetSurprised = ({
       window.trackEvent('email_clicked', {
         section: 'get_surprised_modal',
         email: 'lets@meetmushfiq.com',
+        has_message: userMessage.trim().length > 0,
         timestamp: new Date().toISOString()
       })
     }
-    window.location.href = 'mailto:lets@meetmushfiq.com'
+
+    // Create email with user's message
+    const subject = 'Product Manager - Portfolio Request'
+    const body = userMessage.trim() 
+      ? `Hi Mushfiq,\n\n${userMessage}\n\nI'm interested in your portfolio and would like to connect.\n\nBest regards`
+      : 'Hi Mushfiq,\n\nI\'m interested in your portfolio and would like to connect.\n\nBest regards'
+    
+    const emailUrl = `mailto:lets@meetmushfiq.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    window.location.href = emailUrl
   }
 
   const getSizeClasses = () => {
@@ -80,7 +90,10 @@ const GetSurprised = ({
           <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 relative">
             {/* Close Button */}
             <button
-              onClick={() => setShowModal(false)}
+              onClick={() => {
+                setShowModal(false)
+                setUserMessage('') // Clear message when modal is closed
+              }}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200"
             >
               <X className="w-6 h-6" />
@@ -105,6 +118,24 @@ const GetSurprised = ({
                 </p>
                 <p className="text-sm text-gray-600">
                   I&apos;m passionate about building products that make a difference and would love to connect with fellow Product Managers.
+                </p>
+              </div>
+
+              {/* Message Input */}
+              <div className="mb-6">
+                <label htmlFor="user-message" className="block text-sm font-medium text-gray-700 mb-2">
+                  Tell me about yourself or what you&apos;re looking for:
+                </label>
+                <textarea
+                  id="user-message"
+                  value={userMessage}
+                  onChange={(e) => setUserMessage(e.target.value)}
+                  placeholder="e.g., I'm a Product Manager at [Company] looking to connect..."
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none"
+                  rows={3}
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Optional: Share your role, company, or specific interests
                 </p>
               </div>
 
