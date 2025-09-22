@@ -37,7 +37,7 @@ const Education = () => {
   ]
 
   return (
-    <section id="education" className="py-20 bg-white">
+    <section id="education" className="py-16 bg-white">
       <div className="section-padding">
         <motion.div
           ref={ref}

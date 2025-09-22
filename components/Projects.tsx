@@ -80,7 +80,7 @@ const Projects = () => {
   ]
 
   return (
-    <section id="projects" className="py-20 bg-white">
+    <section id="projects" className="py-16 bg-white">
       <div className="container-max-width section-padding">
         <motion.div
           ref={ref}

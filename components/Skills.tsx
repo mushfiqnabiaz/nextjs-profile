@@ -124,7 +124,7 @@ import {
   ]
 
   return (
-    <section id="skills" className="py-20 bg-gray-50">
+    <section id="skills" className="py-16 bg-gray-50">
       <div className="container-max-width section-padding">
         <motion.div
           ref={ref}

@@ -65,7 +65,7 @@ const SDGImpact = () => {
   ]
 
   return (
-    <section id="sdg" className="py-20 bg-gradient-to-br from-primary-50 to-white">
+    <section id="sdg" className="py-16 bg-gradient-to-br from-primary-50 to-white">
       <div className="container-max-width section-padding">
         <motion.div
           ref={ref}

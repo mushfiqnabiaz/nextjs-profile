@@ -49,7 +49,7 @@ const SDGShowcase = () => {
   ]
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary-50 to-white animated-bg relative">
+    <section className="py-16 bg-gradient-to-br from-primary-50 to-white animated-bg relative">
       <div className="floating-particles">
         <div className="particle"></div>
         <div className="particle"></div>

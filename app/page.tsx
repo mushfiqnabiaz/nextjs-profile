@@ -26,7 +26,7 @@ export default function Home() {
       <SDGShowcase />
       
       {/* My Journey Section with refined styling */}
-      <section id="journey" className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      <section id="journey" className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         <div className="floating-particles">
           <div className="particle"></div>
           <div className="particle"></div>
@@ -39,7 +39,7 @@ export default function Home() {
           <div className="particle"></div>
         </div>
         <div className="container-max-width section-padding relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <div className="inline-block mb-6">
               <span className="text-sm font-semibold text-emerald-600 uppercase tracking-wider">
                 Professional Journey
@@ -67,7 +67,7 @@ export default function Home() {
       <TrainingCertification />
             
       {/* Research Section with refined styling */}
-      <section id="research" className="py-20 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+      <section id="research" className="py-16 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
         <div className="floating-particles">
           <div className="particle"></div>
           <div className="particle"></div>
@@ -80,7 +80,7 @@ export default function Home() {
           <div className="particle"></div>
         </div>
         <div className="container-max-width section-padding relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <div className="inline-block mb-6">
               <span className="text-sm font-semibold text-teal-600 uppercase tracking-wider">
                 Academic Contributions
