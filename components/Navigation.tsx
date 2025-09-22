@@ -255,7 +255,7 @@ const Navigation = () => {
                     link.click()
                     document.body.removeChild(link)
                   }}
-                  className="flex items-center space-x-1 text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-primary-50 rounded-lg"
+                  className="flex items-center space-x-1 bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700 px-4 py-2 text-sm font-semibold transition-all duration-200 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105"
                   aria-label="Download CV - Mushfiqur_Rahaman_CV.pdf"
                 >
                   <FileText className="w-4 h-4" />
@@ -380,7 +380,7 @@ const Navigation = () => {
                       // Close mobile menu after download
                       setIsOpen(false)
                     }}
-                    className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 hover:bg-primary-50 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200 rounded-lg"
+                    className="flex items-center space-x-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700 block px-4 py-3 text-base font-semibold w-full text-center transition-all duration-200 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105"
                     aria-label="Download CV - Mushfiqur_Rahaman_CV.pdf"
                   >
                     <FileText className="w-4 h-4" />
