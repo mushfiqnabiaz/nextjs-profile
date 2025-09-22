@@ -41,7 +41,7 @@ export default function Home() {
         <div className="container-max-width section-padding relative z-10">
           <div className="text-center mb-12">
             <div className="inline-block mb-6">
-              <span className="text-sm font-semibold text-emerald-600 uppercase tracking-wider">
+              <span className="text-sm font-semibold text-primary-600 uppercase tracking-wider">
                 Professional Journey
               </span>
             </div>
@@ -82,7 +82,7 @@ export default function Home() {
         <div className="container-max-width section-padding relative z-10">
           <div className="text-center mb-12">
             <div className="inline-block mb-6">
-              <span className="text-sm font-semibold text-teal-600 uppercase tracking-wider">
+              <span className="text-sm font-semibold text-primary-600 uppercase tracking-wider">
                 Academic Contributions
               </span>
             </div>
