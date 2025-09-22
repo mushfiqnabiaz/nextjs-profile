@@ -26,7 +26,7 @@ export default function Home() {
       <SDGShowcase />
       
       {/* My Journey Section with refined styling */}
-      <section id="journey" className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      <section id="journey" className="py-12 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
         <div className="floating-particles">
           <div className="particle"></div>
           <div className="particle"></div>
