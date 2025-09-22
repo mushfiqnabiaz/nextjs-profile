@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Menu, X, ChevronDown, Briefcase, GraduationCap, Award, BookOpen, Target, FileText } from 'lucide-react'
+import { Menu, X, ChevronDown, Briefcase, GraduationCap, Award, BookOpen, Target, FileText, Home, User, Code, MessageSquare, Wrench } from 'lucide-react'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -40,13 +40,13 @@ const Navigation = () => {
   }, [journeyDropdownOpen, projectsDropdownOpen])
 
       const navItems = [
-        { name: 'Home', href: '/' },
-        { name: 'About', href: '#about' },
-        { name: 'Projects', href: '#projects' },
-        { name: 'Blog', href: '/blog' },
+        { name: 'Home', href: '/', icon: Home },
+        { name: 'About', href: '#about', icon: User },
+        { name: 'Projects', href: '#projects', icon: Code },
+        { name: 'Blog', href: '/blog', icon: BookOpen },
         // { name: 'SDG Impact', href: '#sdg' },
-        { name: 'Skills', href: '#skills' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'Skills', href: '#skills', icon: Wrench },
+        { name: 'Contact', href: '#contact', icon: MessageSquare },
       ]
 
       const journeySections = [
@@ -126,17 +126,19 @@ const Navigation = () => {
                 {/* Home */}
                 <button
                   onClick={() => scrollToSection('/')}
-                  className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                  className="flex items-center space-x-1 text-gray-700 hover:text-primary-600 hover:bg-primary-50 px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-lg"
                 >
-                  Home
+                  <Home className="w-4 h-4" />
+                  <span>Home</span>
                 </button>
                 
                 {/* About */}
                 <button
                   onClick={() => scrollToSection('#about')}
-                  className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                  className="flex items-center space-x-1 text-gray-700 hover:text-primary-600 hover:bg-primary-50 px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-lg"
                 >
-                  About
+                  <User className="w-4 h-4" />
+                  <span>About</span>
                 </button>
                 
                 {/* Journey Dropdown */}
@@ -206,15 +208,19 @@ const Navigation = () => {
                 </div>
                 
                 {/* Rest of navigation items */}
-                {navItems.slice(3).map((item) => (
-                  <button
-                    key={item.name}
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
-                  >
-                    {item.name}
-                  </button>
-                ))}
+                {navItems.slice(2).map((item) => {
+                  const IconComponent = item.icon
+                  return (
+                    <button
+                      key={item.name}
+                      onClick={() => scrollToSection(item.href)}
+                      className="flex items-center space-x-1 text-gray-700 hover:text-primary-600 hover:bg-primary-50 px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-lg"
+                    >
+                      <IconComponent className="w-4 h-4" />
+                      <span>{item.name}</span>
+                    </button>
+                  )
+                })}
                 
                 {/* CV Download Button */}
                 <button
@@ -265,17 +271,19 @@ const Navigation = () => {
                 {/* Home */}
                 <button
                   onClick={() => scrollToSection('/')}
-                  className="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
+                  className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 hover:bg-primary-50 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200 rounded-lg"
                 >
-                  Home
+                  <Home className="w-4 h-4" />
+                  <span>Home</span>
                 </button>
                 
                 {/* About */}
                 <button
                   onClick={() => scrollToSection('#about')}
-                  className="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
+                  className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 hover:bg-primary-50 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200 rounded-lg"
                 >
-                  About
+                  <User className="w-4 h-4" />
+                  <span>About</span>
                 </button>
                 
                 {/* Journey Section in Mobile */}
@@ -319,15 +327,19 @@ const Navigation = () => {
                 </div>
                 
                 {/* Rest of navigation items */}
-                {navItems.slice(3).map((item) => (
-                  <button
-                    key={item.name}
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
-                  >
-                    {item.name}
-                  </button>
-                ))}
+                {navItems.slice(2).map((item) => {
+                  const IconComponent = item.icon
+                  return (
+                    <button
+                      key={item.name}
+                      onClick={() => scrollToSection(item.href)}
+                      className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 hover:bg-primary-50 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200 rounded-lg"
+                    >
+                      <IconComponent className="w-4 h-4" />
+                      <span>{item.name}</span>
+                    </button>
+                  )
+                })}
                 
                 {/* CV Download Button - Mobile */}
                 <div className="border-t border-gray-200 pt-2 mt-2">
