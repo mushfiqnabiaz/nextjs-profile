@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { Menu, X, ChevronDown, Briefcase, GraduationCap, Award, BookOpen, Target, FileText } from 'lucide-react'
-import DownloadCV from './DownloadCV'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -218,11 +217,33 @@ const Navigation = () => {
                 ))}
                 
                 {/* CV Download Button */}
-                <DownloadCV 
-                  variant="link"
-                  className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
-                  showIcon={true}
-                />
+                <button
+                  onClick={() => {
+                    // Track download event
+                    if (typeof window !== 'undefined' && window.trackEvent) {
+                      window.trackEvent('cv_download_clicked', {
+                        file_name: 'Mushfiqur_Rahaman_CV.pdf',
+                        section: 'navigation',
+                        timestamp: new Date().toISOString()
+                      })
+                    }
+                    
+                    // Create download link
+                    const link = document.createElement('a')
+                    link.href = '/Mushfiqur_Rahaman_CV.pdf'
+                    link.download = 'Mushfiqur_Rahaman_CV.pdf'
+                    link.target = '_blank'
+                    link.rel = 'noopener noreferrer'
+                    document.body.appendChild(link)
+                    link.click()
+                    document.body.removeChild(link)
+                  }}
+                  className="flex items-center space-x-1 text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:bg-primary-50 rounded-lg"
+                  aria-label="Download CV - Mushfiqur_Rahaman_CV.pdf"
+                >
+                  <FileText className="w-4 h-4" />
+                  <span>Resume</span>
+                </button>
               </div>
             </div>
 
@@ -310,11 +331,36 @@ const Navigation = () => {
                 
                 {/* CV Download Button - Mobile */}
                 <div className="border-t border-gray-200 pt-2 mt-2">
-                  <DownloadCV 
-                    variant="link"
-                    className="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
-                    showIcon={true}
-                  />
+                  <button
+                    onClick={() => {
+                      // Track download event
+                      if (typeof window !== 'undefined' && window.trackEvent) {
+                        window.trackEvent('cv_download_clicked', {
+                          file_name: 'Mushfiqur_Rahaman_CV.pdf',
+                          section: 'navigation_mobile',
+                          timestamp: new Date().toISOString()
+                        })
+                      }
+                      
+                      // Create download link
+                      const link = document.createElement('a')
+                      link.href = '/Mushfiqur_Rahaman_CV.pdf'
+                      link.download = 'Mushfiqur_Rahaman_CV.pdf'
+                      link.target = '_blank'
+                      link.rel = 'noopener noreferrer'
+                      document.body.appendChild(link)
+                      link.click()
+                      document.body.removeChild(link)
+                      
+                      // Close mobile menu after download
+                      setIsOpen(false)
+                    }}
+                    className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 hover:bg-primary-50 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200 rounded-lg"
+                    aria-label="Download CV - Mushfiqur_Rahaman_CV.pdf"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>Download Resume</span>
+                  </button>
                 </div>
               </div>
             </div>
