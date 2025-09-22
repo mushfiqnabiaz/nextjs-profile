@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import { ArrowDown, Target, Zap, Users } from 'lucide-react'
 import { useState, useEffect } from 'react'
-import DownloadCV from './DownloadCV'
 
 const Hero = () => {
   const [currentPositionIndex, setCurrentPositionIndex] = useState(0)
@@ -142,10 +141,6 @@ const Hero = () => {
             >
               Learn More About Me
             </button>
-            <DownloadCV 
-              className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
-              variant="button"
-            />
             <a
               href="#contact"
               onClick={() => {

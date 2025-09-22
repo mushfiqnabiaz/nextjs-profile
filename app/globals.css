@@ -28,7 +28,7 @@
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 bg-clip-text text-transparent;
   }
   
   .card-hover {
