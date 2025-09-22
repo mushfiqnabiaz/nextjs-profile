@@ -17,6 +17,8 @@ const GetSurprised = ({
   size = 'md'
 }: GetSurprisedProps) => {
   const [showModal, setShowModal] = useState(false)
+  const [userName, setUserName] = useState('')
+  const [userEmail, setUserEmail] = useState('')
   const [userMessage, setUserMessage] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [sendStatus, setSendStatus] = useState<'idle' | 'success' | 'error'>('idle')
@@ -36,6 +38,27 @@ const GetSurprised = ({
 
 
   const handleSendMessage = async () => {
+    // Form validation
+    if (!userName.trim()) {
+      setErrorMessage('Please enter your name.')
+      setSendStatus('error')
+      return
+    }
+
+    if (!userEmail.trim()) {
+      setErrorMessage('Please enter your email address.')
+      setSendStatus('error')
+      return
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(userEmail.trim())) {
+      setErrorMessage('Please enter a valid email address.')
+      setSendStatus('error')
+      return
+    }
+
     setIsLoading(true)
     setSendStatus('idle')
     setErrorMessage('')
@@ -43,8 +66,8 @@ const GetSurprised = ({
     try {
       // Prepare email template parameters
       const templateParams = {
-        from_name: 'Product Manager (Get Surprised)',
-        from_email: 'portfolio@meetmushfiq.com', // Default email for tracking
+        from_name: userName.trim(),
+        from_email: userEmail.trim(),
         subject: 'Product Manager - Portfolio Request via Get Surprised',
         message: userMessage.trim() || 'User clicked "Get Surprised" but didn\'t leave a message. They\'re interested in connecting about your portfolio.',
         to_email: EMAILJS_CONFIG.toEmail,
@@ -65,6 +88,8 @@ const GetSurprised = ({
       if (typeof window !== 'undefined' && window.trackEvent) {
         window.trackEvent('surprise_message_sent', {
           section: 'get_surprised_modal',
+          user_name: userName.trim(),
+          user_email: userEmail.trim(),
           has_message: userMessage.trim().length > 0,
           message_length: userMessage.trim().length,
           timestamp: new Date().toISOString()
@@ -76,6 +101,8 @@ const GetSurprised = ({
       // Reset form and close modal after success
       setTimeout(() => {
         setShowModal(false)
+        setUserName('')
+        setUserEmail('')
         setUserMessage('')
         setSendStatus('idle')
       }, 2000)
@@ -139,7 +166,9 @@ const GetSurprised = ({
             <button
               onClick={() => {
                 setShowModal(false)
-                setUserMessage('') // Clear message when modal is closed
+                setUserName('') // Clear all fields when modal is closed
+                setUserEmail('')
+                setUserMessage('')
                 setSendStatus('idle') // Reset status
                 setErrorMessage('') // Clear error message
               }}
@@ -168,6 +197,39 @@ const GetSurprised = ({
                 <p className="text-sm text-gray-600">
                   I&apos;m passionate about building products that make a difference and would love to connect with fellow Product Managers.
                 </p>
+              </div>
+
+              {/* Name and Email Inputs */}
+              <div className="mb-6 space-y-4">
+                <div>
+                  <label htmlFor="user-name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Your Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="user-name"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    placeholder="Enter your full name"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="user-email" className="block text-sm font-medium text-gray-700 mb-2">
+                    Your Email *
+                  </label>
+                  <input
+                    type="email"
+                    id="user-email"
+                    value={userEmail}
+                    onChange={(e) => setUserEmail(e.target.value)}
+                    placeholder="Enter your email address"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    required
+                  />
+                </div>
               </div>
 
               {/* Message Input */}
