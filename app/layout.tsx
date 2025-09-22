@@ -5,6 +5,7 @@ import './globals.css'
 import NavigationWrapper from '@/components/NavigationWrapper'
 import StructuredData from '@/components/StructuredData'
 import AnalyticsWrapper from '@/components/AnalyticsWrapper'
+import ConsentManager from '@/components/ConsentManager'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -135,7 +136,7 @@ export default function RootLayout({
         ></script>
       </head>
       <body className={inter.className}>
-        {/* Google Analytics */}
+        {/* Google Analytics with Consent Mode */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-RJJRTWHZNB"
           strategy="afterInteractive"
@@ -144,13 +145,26 @@ export default function RootLayout({
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
+            
+            // Set default consent state (will be updated by ConsentManager)
+            gtag('consent', 'default', {
+              'ad_storage': 'denied',
+              'ad_user_data': 'denied',
+              'ad_personalization': 'denied',
+              'analytics_storage': 'denied'
+            });
+            
             gtag('js', new Date());
-            gtag('config', 'G-RJJRTWHZNB');
+            gtag('config', 'G-RJJRTWHZNB', {
+              'anonymize_ip': true,
+              'allow_google_signals': false
+            });
           `}
         </Script>
         
         <NavigationWrapper />
         <main role="main">{children}</main>
+        <ConsentManager />
       </body>
     </html>
   )

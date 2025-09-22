@@ -25,7 +25,9 @@ const AdSense: React.FC<AdSenseProps> = ({
 }) => {
   useEffect(() => {
     try {
-      if (typeof window !== 'undefined' && window.adsbygoogle) {
+      // Check if user has given consent for ad storage
+      const hasConsent = localStorage.getItem('consent-given')
+      if (hasConsent === 'true' && typeof window !== 'undefined' && window.adsbygoogle) {
         (window.adsbygoogle = window.adsbygoogle || []).push({})
       }
     } catch (err) {

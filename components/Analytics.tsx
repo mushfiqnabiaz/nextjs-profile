@@ -58,7 +58,7 @@ const Analytics = () => {
           referrer: document.referrer,
         })
         
-        // Google Analytics tracking
+        // Google Analytics tracking (respects consent mode)
         if (window.gtag) {
           window.gtag('config', 'G-RJJRTWHZNB', {
             page_title: document.title,
@@ -77,7 +77,7 @@ const Analytics = () => {
           timestamp: new Date().toISOString(),
         })
         
-        // Google Analytics tracking
+        // Google Analytics tracking (respects consent mode)
         if (window.gtag) {
           window.gtag('event', eventName, {
             ...properties,
@@ -135,7 +135,7 @@ const Analytics = () => {
         })
       }
       
-      // Google Analytics tracking
+      // Google Analytics tracking (respects consent mode)
       if (window.gtag) {
         window.gtag('config', 'G-RJJRTWHZNB', {
           page_title: document.title,
