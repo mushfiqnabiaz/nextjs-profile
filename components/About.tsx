@@ -17,7 +17,7 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="py-20 bg-white animated-bg relative" itemScope itemType="https://schema.org/Person">
+    <section id="about" className="py-16 bg-white animated-bg relative" itemScope itemType="https://schema.org/Person">
       <div className="floating-particles">
         <div className="particle"></div>
         <div className="particle"></div>
@@ -35,7 +35,7 @@ const About = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               About Me
@@ -49,7 +49,7 @@ const About = () => {
             </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-12">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}

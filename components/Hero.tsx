@@ -63,12 +63,12 @@ const Hero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="mb-8"
+              className="mb-6"
             >
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6">
                 Mushfiqur Rahaman
               </h1>
-              <div className="text-xl md:text-2xl text-gray-600 mb-8 h-8 flex items-center justify-center">
+              <div className="text-xl md:text-2xl text-gray-600 mb-6 h-8 flex items-center justify-center">
                 <motion.span
                   key={currentPositionIndex}
                   initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-12"
+            className="mb-8"
           >
             <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
               Specializing in Agritech, Aquatech, and Energy Efficiency solutions that align with 
@@ -102,9 +102,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-12"
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8"
           >
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+            <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100">
               <Target className="w-8 h-8 text-primary-600 mb-3" />
               <h3 className="font-semibold text-gray-900 mb-2">SDG Alignment</h3>
               <p className="text-sm text-gray-600 text-center">
@@ -112,7 +112,7 @@ const Hero = () => {
               </p>
             </div>
             
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+            <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100">
               <Zap className="w-8 h-8 text-primary-600 mb-3" />
               <h3 className="font-semibold text-gray-900 mb-2">Technical Excellence</h3>
               <p className="text-sm text-gray-600 text-center">
@@ -120,7 +120,7 @@ const Hero = () => {
               </p>
             </div>
             
-            <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+            <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm border border-gray-100">
               <Users className="w-8 h-8 text-primary-600 mb-3" />
               <h3 className="font-semibold text-gray-900 mb-2">Cross-Functional Leadership</h3>
               <p className="text-sm text-gray-600 text-center">

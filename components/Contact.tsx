@@ -193,7 +193,7 @@ const Contact = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Let&apos;s Connect
@@ -204,14 +204,16 @@ const Contact = () => {
           </p>
           
           {/* Get Surprised Button */}
-          <GetSurprised 
-            className="shadow-lg hover:shadow-xl"
-            variant="button"
-            size="md"
-          />
+          <div className="flex justify-center">
+            <GetSurprised 
+              className="shadow-lg hover:shadow-xl"
+              variant="button"
+              size="md"
+            />
+          </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -304,7 +306,7 @@ const Contact = () => {
             <h3 className="text-2xl font-bold text-gray-900 mb-8">Send a Message</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Name
