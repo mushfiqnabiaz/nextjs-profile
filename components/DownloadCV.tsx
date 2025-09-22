@@ -13,7 +13,7 @@ const DownloadCV = ({
   className = '', 
   variant = 'button',
   showIcon = true,
-  fileName = 'CV_Mushfiqur_Rahaman.pdf'
+  fileName = 'cv/Mushfiqur_Rahaman_CV.pdf'
 }: DownloadCVProps) => {
   
   const handleDownload = () => {
