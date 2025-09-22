@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowDown, Target, Zap, Users } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import DownloadCV from './DownloadCV'
 
 const Hero = () => {
   const [currentPositionIndex, setCurrentPositionIndex] = useState(0)
@@ -141,21 +142,25 @@ const Hero = () => {
             >
               Learn More About Me
             </button>
-              <a
-                href="#contact"
-                onClick={() => {
-                  if (typeof window !== 'undefined' && window.trackEvent) {
-                    window.trackEvent('hero_cta_clicked', {
-                      cta_type: 'contact',
-                      cta_text: 'Get In Touch',
-                      section: 'hero'
-                    })
-                  }
-                }}
-                className="border border-primary-600 text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors duration-200"
-              >
-                Get In Touch
-              </a>
+            <DownloadCV 
+              className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors duration-200 shadow-lg hover:shadow-xl"
+              variant="button"
+            />
+            <a
+              href="#contact"
+              onClick={() => {
+                if (typeof window !== 'undefined' && window.trackEvent) {
+                  window.trackEvent('hero_cta_clicked', {
+                    cta_type: 'contact',
+                    cta_text: 'Get In Touch',
+                    section: 'hero'
+                  })
+                }
+              }}
+              className="border border-primary-600 text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors duration-200"
+            >
+              Get In Touch
+            </a>
           </motion.div>
 
             <motion.div

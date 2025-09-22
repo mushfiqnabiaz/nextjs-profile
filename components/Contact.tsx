@@ -6,6 +6,7 @@ import { useRef, useState } from 'react'
 import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle, Facebook, Instagram, AlertCircle } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 import { EMAILJS_CONFIG } from '../config/emailjs'
+import DownloadCV from './DownloadCV'
 
 const Contact = () => {
   const ref = useRef(null)
@@ -261,6 +262,15 @@ const Contact = () => {
                   </a>
                 ))}
               </div>
+            </div>
+
+            {/* CV Download Section */}
+            <div className="mt-8">
+              <h4 className="font-semibold text-gray-900 mb-4">Download My CV</h4>
+              <DownloadCV 
+                variant="card"
+                className="w-full"
+              />
             </div>
 
             <div className="mt-8 p-6 bg-primary-50 rounded-lg">
