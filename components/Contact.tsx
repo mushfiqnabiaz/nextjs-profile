@@ -230,6 +230,22 @@ const Contact = () => {
               ))}
             </div>
 
+            {/* Phone etiquette message */}
+            <div className="mb-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <div className="flex items-start space-x-3">
+                <div className="bg-blue-100 p-2 rounded-lg">
+                  <Phone className="w-4 h-4 text-blue-600" />
+                </div>
+                <div>
+                  <h4 className="font-semibold text-blue-900 mb-1">Phone Etiquette</h4>
+                  <p className="text-sm text-blue-700">
+                    Before calling, please send a text message first introducing yourself and the purpose of your call. 
+                    This helps me prepare for our conversation and ensures I can give you my full attention.
+                  </p>
+                </div>
+              </div>
+            </div>
+
             <div>
               <h4 className="font-semibold text-gray-900 mb-4">Connect on Social Media</h4>
               <div className="flex space-x-4">
@@ -404,7 +420,7 @@ const Contact = () => {
 
             <div className="mt-8 p-4 bg-gray-50 rounded-lg">
               <p className="text-sm text-gray-600 text-center">
-                I typically respond within 24 hours. For urgent matters, please call or text.
+                I typically respond within 24 hours. For urgent matters, please text first before calling.
               </p>
             </div>
           </motion.div>
