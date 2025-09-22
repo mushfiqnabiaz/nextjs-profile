@@ -6,6 +6,7 @@ import NavigationWrapper from '@/components/NavigationWrapper'
 import StructuredData from '@/components/StructuredData'
 import AnalyticsWrapper from '@/components/AnalyticsWrapper'
 import ConsentManager from '@/components/ConsentManager'
+import AnimatedFavicon from '@/components/AnimatedFavicon'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
+      { url: '/favicon-simple-animated.svg', type: 'image/svg+xml' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
       { url: '/favicon.ico', sizes: '32x32' },
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -162,6 +164,7 @@ export default function RootLayout({
           `}
         </Script>
         
+        <AnimatedFavicon />
         <NavigationWrapper />
         <main role="main">{children}</main>
         <ConsentManager />

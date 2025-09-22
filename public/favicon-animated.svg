@@ -1,0 +1,86 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient definitions -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <animateTransform
+        attributeName="gradientTransform"
+        type="rotate"
+        values="0 16 16;360 16 16"
+        dur="8s"
+        repeatCount="indefinite"/>
+    </linearGradient>
+    
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f0f9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+      <animateTransform
+        attributeName="gradientTransform"
+        type="rotate"
+        values="0 16 16;-360 16 16"
+        dur="6s"
+        repeatCount="indefinite"/>
+    </linearGradient>
+    
+    <!-- Pulse animation -->
+    <animate id="pulse" attributeName="r" values="16;20;16" dur="3s" repeatCount="indefinite"/>
+  </defs>
+  
+  <!-- Background circle with animated gradient -->
+  <circle cx="16" cy="16" r="16" fill="url(#bgGradient)">
+    <animateTransform
+      attributeName="transform"
+      type="scale"
+      values="1;1.05;1"
+      dur="4s"
+      repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Inner glow effect -->
+  <circle cx="16" cy="16" r="12" fill="none" stroke="url(#textGradient)" stroke-width="0.5" opacity="0.6">
+    <animateTransform
+      attributeName="transform"
+      type="rotate"
+      values="0 16 16;360 16 16"
+      dur="10s"
+      repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Main "M" letter -->
+  <path d="M8 24 L8 8 L12 8 L16 16 L20 8 L24 8 L24 24 L20 24 L20 12 L16 20 L12 12 L12 24 Z" 
+        fill="url(#textGradient)" 
+        font-family="Inter, sans-serif" 
+        font-weight="bold">
+    <!-- Subtle scale animation for the letter -->
+    <animateTransform
+      attributeName="transform"
+      type="scale"
+      values="1;1.02;1"
+      dur="5s"
+      repeatCount="indefinite"/>
+  </path>
+  
+  <!-- Floating particles -->
+  <circle cx="10" cy="10" r="1" fill="#ffffff" opacity="0.8">
+    <animate attributeName="cy" values="10;6;10" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="22" cy="10" r="1" fill="#ffffff" opacity="0.6">
+    <animate attributeName="cy" values="10;6;10" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="10" cy="22" r="0.8" fill="#ffffff" opacity="0.7">
+    <animate attributeName="cy" values="22;26;22" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="22" cy="22" r="0.8" fill="#ffffff" opacity="0.5">
+    <animate attributeName="cy" values="22;26;22" dur="2.8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.8s" repeatCount="indefinite"/>
+  </circle>
+</svg>

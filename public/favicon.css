@@ -1,0 +1,31 @@
+/* Animated Favicon Styles */
+@keyframes favicon-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes favicon-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes favicon-glow {
+  0% { filter: brightness(1) drop-shadow(0 0 0px #4f46e5); }
+  50% { filter: brightness(1.2) drop-shadow(0 0 4px #4f46e5); }
+  100% { filter: brightness(1) drop-shadow(0 0 0px #4f46e5); }
+}
+
+/* Apply animations to favicon */
+.favicon-animated {
+  animation: favicon-pulse 3s ease-in-out infinite, favicon-glow 4s ease-in-out infinite;
+}
+
+.favicon-rotating {
+  animation: favicon-rotate 8s linear infinite;
+}
+
+/* Hover effects */
+.favicon-animated:hover {
+  animation-duration: 1.5s, 2s;
+}
