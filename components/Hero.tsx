@@ -9,7 +9,7 @@ const Hero = () => {
   
   const positions = [
     'Technical Product Manager',
-    'Agritech Specialist',
+    'Agrotech Specialist',
     'Aquatech Expert',
     'IoT Solutions Architect',
     'Energy Efficiency Consultant',
