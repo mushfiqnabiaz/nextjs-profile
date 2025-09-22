@@ -418,10 +418,18 @@ const Contact = () => {
               </div>
             )}
 
-            <div className="mt-8 p-4 bg-gray-50 rounded-lg">
-              <p className="text-sm text-gray-600 text-center">
-                I typically respond within 24 hours. For urgent matters, please text first before calling.
-              </p>
+            <div className="mt-8 p-4 bg-gradient-to-r from-primary-50 to-blue-50 border border-primary-200 rounded-lg">
+              <div className="text-center">
+                <div className="flex items-center justify-center mb-2">
+                  <div className="bg-primary-100 p-2 rounded-full mr-2">
+                    <Mail className="w-4 h-4 text-primary-600" />
+                  </div>
+                  <h4 className="font-semibold text-primary-900">Response Time</h4>
+                </div>
+                <p className="text-sm text-primary-700 font-medium">
+                  I typically respond within 24 hours. For urgent matters, please <span className="font-bold text-primary-900">text first before calling</span>.
+                </p>
+              </div>
             </div>
           </motion.div>
         </div>
