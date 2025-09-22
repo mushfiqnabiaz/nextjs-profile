@@ -3,7 +3,9 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle, Facebook, Instagram } from 'lucide-react'
+import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle, Facebook, Instagram, AlertCircle } from 'lucide-react'
+import emailjs from '@emailjs/browser'
+import { EMAILJS_CONFIG } from '../config/emailjs'
 
 const Contact = () => {
   const ref = useRef(null)
@@ -15,42 +17,116 @@ const Contact = () => {
     message: ''
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
-    // Track form submission with PostHog
-    if (typeof window !== 'undefined' && window.trackEvent) {
-      window.trackEvent('contact_form_submitted', {
-        form_type: 'contact',
-        has_name: !!formData.name,
-        has_email: !!formData.email,
-        has_subject: !!formData.subject,
-        has_message: !!formData.message,
-        message_length: formData.message.length,
-        user_agent: navigator.userAgent,
-        timestamp: new Date().toISOString()
-      })
+    setIsLoading(true)
+    setSubmitStatus('idle')
+    setErrorMessage('')
+
+    // Basic form validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setSubmitStatus('error')
+      setErrorMessage('Please fill in all required fields (Name, Email, and Message).')
+      setIsLoading(false)
+      return
     }
 
-    // Also send a manual PostHog event
-    if (typeof window !== 'undefined' && window.posthog) {
-      window.posthog.capture('portfolio_contact_form', {
-        name_provided: !!formData.name,
-        email_provided: !!formData.email,
-        subject_provided: !!formData.subject,
-        message_length: formData.message.length,
-        form_completion_time: Date.now(),
-        source: 'portfolio_website'
-      })
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      setSubmitStatus('error')
+      setErrorMessage('Please enter a valid email address.')
+      setIsLoading(false)
+      return
     }
-    
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! I will get back to you soon.')
-    setFormData({ name: '', email: '', subject: '', message: '' })
-    setIsSubmitted(true)
-    setTimeout(() => setIsSubmitted(false), 3000)
+
+    try {
+      // Prepare email template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject || 'Portfolio Contact Form',
+        message: formData.message,
+        to_email: EMAILJS_CONFIG.toEmail,
+        reply_to: formData.email
+      }
+
+      // Send email using EmailJS
+      await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        templateParams,
+        EMAILJS_CONFIG.publicKey
+      )
+
+      // Track successful form submission with PostHog
+      if (typeof window !== 'undefined' && window.trackEvent) {
+        window.trackEvent('contact_form_submitted', {
+          form_type: 'contact',
+          has_name: !!formData.name,
+          has_email: !!formData.email,
+          has_subject: !!formData.subject,
+          has_message: !!formData.message,
+          message_length: formData.message.length,
+          user_agent: navigator.userAgent,
+          timestamp: new Date().toISOString(),
+          email_sent: true
+        })
+      }
+
+      // Also send a manual PostHog event
+      if (typeof window !== 'undefined' && window.posthog) {
+        window.posthog.capture('portfolio_contact_form', {
+          name_provided: !!formData.name,
+          email_provided: !!formData.email,
+          subject_provided: !!formData.subject,
+          message_length: formData.message.length,
+          form_completion_time: Date.now(),
+          source: 'portfolio_website',
+          email_sent: true
+        })
+      }
+
+      // Success state
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', subject: '', message: '' })
+      setIsSubmitted(true)
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false)
+        setSubmitStatus('idle')
+      }, 5000)
+
+    } catch (error) {
+      console.error('Email sending failed:', error)
+      
+      // Track failed form submission with PostHog
+      if (typeof window !== 'undefined' && window.trackEvent) {
+        window.trackEvent('contact_form_error', {
+          form_type: 'contact',
+          error_type: 'email_sending_failed',
+          error_message: error instanceof Error ? error.message : 'Unknown error',
+          timestamp: new Date().toISOString()
+        })
+      }
+
+      // Error state
+      setSubmitStatus('error')
+      setErrorMessage('Failed to send message. Please try again or contact me directly at lets@meetmushfiq.com')
+      
+      // Reset error message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle')
+        setErrorMessage('')
+      }, 5000)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -270,17 +346,31 @@ const Contact = () => {
 
               <button
                 type="submit"
-                disabled={isSubmitted}
+                disabled={isLoading || submitStatus === 'success'}
                 className={`w-full flex items-center justify-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 ${
-                  isSubmitted
+                  submitStatus === 'success'
                     ? 'bg-green-600 text-white'
+                    : submitStatus === 'error'
+                    ? 'bg-red-600 text-white'
+                    : isLoading
+                    ? 'bg-gray-400 text-white cursor-not-allowed'
                     : 'bg-primary-600 text-white hover:bg-primary-700 shadow-lg hover:shadow-xl'
                 }`}
               >
-                {isSubmitted ? (
+                {submitStatus === 'success' ? (
                   <>
                     <CheckCircle className="w-5 h-5" />
                     <span>Message Sent!</span>
+                  </>
+                ) : submitStatus === 'error' ? (
+                  <>
+                    <AlertCircle className="w-5 h-5" />
+                    <span>Failed to Send</span>
+                  </>
+                ) : isLoading ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Sending...</span>
                   </>
                 ) : (
                   <>
@@ -290,6 +380,27 @@ const Contact = () => {
                 )}
               </button>
             </form>
+
+            {/* Status Messages */}
+            {submitStatus === 'error' && errorMessage && (
+              <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div className="flex items-center space-x-2">
+                  <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+                  <p className="text-sm text-red-700">{errorMessage}</p>
+                </div>
+              </div>
+            )}
+
+            {submitStatus === 'success' && (
+              <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                  <p className="text-sm text-green-700">
+                    Thank you for your message! I&apos;ll get back to you within 24 hours.
+                  </p>
+                </div>
+              </div>
+            )}
 
             <div className="mt-8 p-4 bg-gray-50 rounded-lg">
               <p className="text-sm text-gray-600 text-center">
