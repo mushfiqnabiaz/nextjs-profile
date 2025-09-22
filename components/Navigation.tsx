@@ -1,7 +1,8 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Menu, X, ChevronDown, Briefcase, GraduationCap, Award, BookOpen, Target } from 'lucide-react'
+import { Menu, X, ChevronDown, Briefcase, GraduationCap, Award, BookOpen, Target, FileText } from 'lucide-react'
+import DownloadCV from './DownloadCV'
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -215,6 +216,13 @@ const Navigation = () => {
                     {item.name}
                   </button>
                 ))}
+                
+                {/* CV Download Button */}
+                <DownloadCV 
+                  variant="link"
+                  className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                  showIcon={true}
+                />
               </div>
             </div>
 
@@ -299,6 +307,15 @@ const Navigation = () => {
                     {item.name}
                   </button>
                 ))}
+                
+                {/* CV Download Button - Mobile */}
+                <div className="border-t border-gray-200 pt-2 mt-2">
+                  <DownloadCV 
+                    variant="link"
+                    className="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
+                    showIcon={true}
+                  />
+                </div>
               </div>
             </div>
           )}
