@@ -42,7 +42,6 @@ const Navigation = () => {
       const navItems = [
         { name: 'Home', href: '/' },
         { name: 'About', href: '#about' },
-        { name: 'Projects', href: '#projects' },
         { name: 'Blog', href: '/blog' },
         // { name: 'SDG Impact', href: '#sdg' },
         { name: 'Skills', href: '#skills' },
@@ -174,15 +173,23 @@ const Navigation = () => {
                 
                 {/* Projects Dropdown */}
                 <div className="relative" ref={projectsDropdownRef}>
-                  <button
-                    onClick={() => setProjectsDropdownOpen(!projectsDropdownOpen)}
-                    className="flex items-center text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
-                  >
-                    Projects
-                    <ChevronDown className={`w-4 h-4 ml-1 transition-transform duration-200 ${
-                      projectsDropdownOpen ? 'rotate-180' : ''
-                    }`} />
-                  </button>
+                  <div className="flex items-center">
+                    <button
+                      onClick={() => scrollToSection('#projects')}
+                      className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
+                    >
+                      Projects
+                    </button>
+                    <button
+                      onClick={() => setProjectsDropdownOpen(!projectsDropdownOpen)}
+                      className="text-gray-700 hover:text-primary-600 px-1 py-2 transition-colors duration-200"
+                      aria-label="Toggle projects dropdown"
+                    >
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                        projectsDropdownOpen ? 'rotate-180' : ''
+                      }`} />
+                    </button>
+                  </div>
 
                   {projectsDropdownOpen && (
                     <div className="absolute top-full left-0 mt-1 w-72 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
@@ -303,6 +310,14 @@ const Navigation = () => {
                   <div className="px-3 py-2 text-sm font-semibold text-gray-500 uppercase tracking-wider">
                     Projects
                   </div>
+                  {/* Main Projects Button */}
+                  <button
+                    onClick={() => scrollToSection('#projects')}
+                    className="flex items-center text-gray-700 hover:text-primary-600 px-3 py-2 text-base font-medium w-full text-left transition-colors duration-200"
+                  >
+                    <Target className="w-4 h-4 text-primary-600 mr-3" />
+                    Projects
+                  </button>
                   {projectSections.map((section) => {
                     const IconComponent = section.icon
                     return (
