@@ -1,7 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { Gift, X, Mail } from 'lucide-react'
+import { Gift, X, Mail, Send, CheckCircle, AlertCircle } from 'lucide-react'
+import emailjs from '@emailjs/browser'
+import { EMAILJS_CONFIG } from '../config/emailjs'
 
 interface GetSurprisedProps {
   className?: string
@@ -16,6 +18,9 @@ const GetSurprised = ({
 }: GetSurprisedProps) => {
   const [showModal, setShowModal] = useState(false)
   const [userMessage, setUserMessage] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [sendStatus, setSendStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleSurprise = () => {
     // Track surprise button click
@@ -30,25 +35,67 @@ const GetSurprised = ({
   }
 
 
-  const handleEmail = () => {
-    // Track email click from surprise modal
-    if (typeof window !== 'undefined' && window.trackEvent) {
-      window.trackEvent('email_clicked', {
-        section: 'get_surprised_modal',
-        email: 'lets@meetmushfiq.com',
-        has_message: userMessage.trim().length > 0,
-        timestamp: new Date().toISOString()
-      })
-    }
+  const handleSendMessage = async () => {
+    setIsLoading(true)
+    setSendStatus('idle')
+    setErrorMessage('')
 
-    // Create email with user's message
-    const subject = 'Product Manager - Portfolio Request'
-    const body = userMessage.trim() 
-      ? `Hi Mushfiq,\n\n${userMessage}\n\nI'm interested in your portfolio and would like to connect.\n\nBest regards`
-      : 'Hi Mushfiq,\n\nI\'m interested in your portfolio and would like to connect.\n\nBest regards'
-    
-    const emailUrl = `mailto:lets@meetmushfiq.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    window.location.href = emailUrl
+    try {
+      // Prepare email template parameters
+      const templateParams = {
+        from_name: 'Product Manager (Get Surprised)',
+        from_email: 'portfolio@meetmushfiq.com', // Default email for tracking
+        subject: 'Product Manager - Portfolio Request via Get Surprised',
+        message: userMessage.trim() || 'User clicked "Get Surprised" but didn\'t leave a message. They\'re interested in connecting about your portfolio.',
+        to_email: EMAILJS_CONFIG.toEmail,
+        timestamp: new Date().toLocaleString()
+      }
+
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        EMAILJS_CONFIG.serviceId,
+        EMAILJS_CONFIG.templateId,
+        templateParams,
+        EMAILJS_CONFIG.publicKey
+      )
+
+      console.log('Email sent successfully:', result.text)
+      
+      // Track successful email send
+      if (typeof window !== 'undefined' && window.trackEvent) {
+        window.trackEvent('surprise_message_sent', {
+          section: 'get_surprised_modal',
+          has_message: userMessage.trim().length > 0,
+          message_length: userMessage.trim().length,
+          timestamp: new Date().toISOString()
+        })
+      }
+
+      setSendStatus('success')
+      
+      // Reset form and close modal after success
+      setTimeout(() => {
+        setShowModal(false)
+        setUserMessage('')
+        setSendStatus('idle')
+      }, 2000)
+
+    } catch (error) {
+      console.error('Email sending failed:', error)
+      setSendStatus('error')
+      setErrorMessage('Failed to send message. Please try again or contact me directly.')
+      
+      // Track failed email send
+      if (typeof window !== 'undefined' && window.trackEvent) {
+        window.trackEvent('surprise_message_failed', {
+          section: 'get_surprised_modal',
+          error: error instanceof Error ? error.message : 'Unknown error',
+          timestamp: new Date().toISOString()
+        })
+      }
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const getSizeClasses = () => {
@@ -93,6 +140,8 @@ const GetSurprised = ({
               onClick={() => {
                 setShowModal(false)
                 setUserMessage('') // Clear message when modal is closed
+                setSendStatus('idle') // Reset status
+                setErrorMessage('') // Clear error message
               }}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200"
             >
@@ -142,13 +191,44 @@ const GetSurprised = ({
               {/* Action Button */}
               <div className="space-y-3">
                 <button
-                  onClick={handleEmail}
-                  className="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center space-x-2"
+                  onClick={handleSendMessage}
+                  disabled={isLoading}
+                  className="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center space-x-2"
                 >
-                  <Mail className="w-5 h-5" />
-                  <span>Let&apos;s Connect</span>
+                  {isLoading ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </button>
               </div>
+
+              {/* Status Messages */}
+              {sendStatus === 'success' && (
+                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
+                    <p className="text-sm text-green-700">
+                      Message sent successfully! I&apos;ll get back to you within 24 hours.
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {sendStatus === 'error' && errorMessage && (
+                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                  <div className="flex items-center space-x-2">
+                    <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+                    <p className="text-sm text-red-700">{errorMessage}</p>
+                  </div>
+                </div>
+              )}
 
               {/* Footer */}
               <p className="text-xs text-gray-500 mt-4">
