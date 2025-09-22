@@ -139,7 +139,12 @@ const Navigation = () => {
                 </button>
                 
                 {/* Journey Dropdown */}
-                <div className="relative" ref={journeyDropdownRef}>
+                <div 
+                  className="relative" 
+                  ref={journeyDropdownRef}
+                  onMouseEnter={() => setJourneyDropdownOpen(true)}
+                  onMouseLeave={() => setJourneyDropdownOpen(false)}
+                >
                   <button
                     onClick={() => setJourneyDropdownOpen(!journeyDropdownOpen)}
                     className="flex items-center text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors duration-200"
@@ -172,7 +177,12 @@ const Navigation = () => {
                 </div>
                 
                 {/* Projects Dropdown */}
-                <div className="relative" ref={projectsDropdownRef}>
+                <div 
+                  className="relative" 
+                  ref={projectsDropdownRef}
+                  onMouseEnter={() => setProjectsDropdownOpen(true)}
+                  onMouseLeave={() => setProjectsDropdownOpen(false)}
+                >
                   <div className="flex items-center">
                     <button
                       onClick={() => scrollToSection('#projects')}
