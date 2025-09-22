@@ -4,13 +4,13 @@
 
 export const EMAILJS_CONFIG = {
   // Your EmailJS service ID (e.g., 'service_abc123')
-  serviceId: 'service_portfolio',
+  serviceId: 'service_lau5cec',
   
   // Your EmailJS template ID (e.g., 'template_xyz789')
-  templateId: 'template_contact',
+  templateId: 'template_2s6z04j',
   
   // Your EmailJS public key (e.g., 'user_abc123def456')
-  publicKey: 'YOUR_EMAILJS_PUBLIC_KEY',
+  publicKey: 'i1Kc2sbrUePJqN7V1',
   
   // Recipient email address
   toEmail: 'lets@meetmushfiq.com'
