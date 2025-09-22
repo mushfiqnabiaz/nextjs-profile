@@ -8,7 +8,7 @@ posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
     capture_pageleave: true,
     loaded: function(posthog) {
         // Identify user with portfolio information
-        const userEmail = 'hello@meetmushfiq.com';
+        const userEmail = 'lets@meetmushfiq.com';
         if (userEmail) {
             posthog.identify(userEmail, {
                 email: userEmail,

@@ -42,8 +42,8 @@ const StructuredData = () => {
           "addressLocality": "Dhaka",
           "addressCountry": "Bangladesh"
         },
-        "email": "hello@meetmushfiq.com",
-        "telephone": "+8801234567890",
+        "email": "lets@meetmushfiq.com",
+        "telephone": "+8801601917109",
         "sameAs": [
           "https://linkedin.com/in/mushfiqur-rahaman",
           "https://github.com/mushfiqur-rahaman",

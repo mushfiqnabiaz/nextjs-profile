@@ -64,14 +64,14 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "hello@meetmushfiq.com",
-      link: "mailto:hello@meetmushfiq.com"
+      value: "lets@meetmushfiq.com",
+      link: "mailto:lets@meetmushfiq.com"
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+880 1234 567890",
-      link: "tel:+8801234567890"
+      value: "+8801601917109",
+      link: "tel:+8801601917109"
     },
     {
       icon: MapPin,

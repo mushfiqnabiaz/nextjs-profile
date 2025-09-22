@@ -55,10 +55,10 @@ export default function Error({
         <div className="mt-8 text-sm text-gray-500">
           <p>If this problem persists, please contact me at:</p>
           <a 
-            href="mailto:hello@meetmushfiq.com" 
+            href="mailto:lets@meetmushfiq.com" 
             className="text-primary-600 hover:text-primary-700 font-medium"
           >
-            hello@meetmushfiq.com
+            lets@meetmushfiq.com
           </a>
         </div>
       </div>
