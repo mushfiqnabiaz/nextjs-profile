@@ -125,6 +125,7 @@ export default function RootLayout({
         <AnalyticsWrapper />
         <meta name="color-scheme" content="light" />
         <meta name="theme-color" content="#6366f1" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-RJJRTWHZNB"></script>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5724625538341143" crossOrigin="anonymous"></script>
         <script 
           src="https://platform.linkedin.com/badges/js/profile.js" 

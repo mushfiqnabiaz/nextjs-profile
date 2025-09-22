@@ -4,11 +4,32 @@ import { useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 import posthog from 'posthog-js'
 
+// Google Analytics gtag function
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void
+    dataLayer: any[]
+  }
+}
+
 const Analytics = () => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
   useEffect(() => {
+    // Initialize Google Analytics
+    if (typeof window !== 'undefined') {
+      window.dataLayer = window.dataLayer || []
+      window.gtag = function() {
+        window.dataLayer.push(arguments)
+      }
+      window.gtag('js', new Date())
+      window.gtag('config', 'G-RJJRTWHZNB', {
+        page_title: document.title,
+        page_location: window.location.href,
+      })
+    }
+
     // Initialize PostHog if not already initialized
     if (typeof window !== 'undefined' && !window.posthog) {
       posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
@@ -43,21 +64,40 @@ const Analytics = () => {
     if (typeof window !== 'undefined' && window.posthog) {
       // Track page views
       const trackPageView = (url: string) => {
+        // PostHog tracking
         window.posthog.capture('$pageview', {
           $current_url: url,
           page_title: document.title,
           referrer: document.referrer,
         })
+        
+        // Google Analytics tracking
+        if (window.gtag) {
+          window.gtag('config', 'G-RJJRTWHZNB', {
+            page_title: document.title,
+            page_location: url,
+          })
+        }
       }
 
       // Track custom events
       const trackEvent = (eventName: string, properties?: Record<string, any>) => {
+        // PostHog tracking
         window.posthog.capture(eventName, {
           ...properties,
           page_url: window.location.href,
           page_title: document.title,
           timestamp: new Date().toISOString(),
         })
+        
+        // Google Analytics tracking
+        if (window.gtag) {
+          window.gtag('event', eventName, {
+            ...properties,
+            page_title: document.title,
+            page_location: window.location.href,
+          })
+        }
       }
 
       // Track user interactions
@@ -96,13 +136,25 @@ const Analytics = () => {
 
   // Track page changes
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.posthog) {
+    if (typeof window !== 'undefined') {
       const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '')
-      window.posthog.capture('$pageview', {
-        $current_url: url,
-        page_title: document.title,
-        referrer: document.referrer,
-      })
+      
+      // PostHog tracking
+      if (window.posthog) {
+        window.posthog.capture('$pageview', {
+          $current_url: url,
+          page_title: document.title,
+          referrer: document.referrer,
+        })
+      }
+      
+      // Google Analytics tracking
+      if (window.gtag) {
+        window.gtag('config', 'G-RJJRTWHZNB', {
+          page_title: document.title,
+          page_location: window.location.origin + url,
+        })
+      }
     }
   }, [pathname, searchParams])
 
