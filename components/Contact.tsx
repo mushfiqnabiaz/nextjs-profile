@@ -6,6 +6,7 @@ import { useRef, useState } from 'react'
 import { Mail, Phone, MapPin, Linkedin, Github, Send, CheckCircle, Facebook, Instagram, AlertCircle } from 'lucide-react'
 import emailjs from '@emailjs/browser'
 import { EMAILJS_CONFIG } from '../config/emailjs'
+import GetSurprised from './GetSurprised'
 
 const Contact = () => {
   const ref = useRef(null)
@@ -197,10 +198,17 @@ const Contact = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
             Let&apos;s Connect
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
             I&apos;m always interested in discussing new opportunities, innovative projects, 
             and collaborations that align with sustainable development goals. Let&apos;s build something meaningful together.
           </p>
+          
+          {/* Get Surprised Button */}
+          <GetSurprised 
+            className="shadow-lg hover:shadow-xl"
+            variant="button"
+            size="md"
+          />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
