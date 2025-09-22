@@ -161,7 +161,7 @@ const GetSurprised = ({
       {/* Surprise Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 relative">
+          <div className="bg-white rounded-xl shadow-2xl max-w-sm w-full p-4 relative">
             {/* Close Button */}
             <button
               onClick={() => {
@@ -179,92 +179,77 @@ const GetSurprised = ({
 
             {/* Modal Content */}
             <div className="text-center">
-              {/* Gift Icon */}
-              <div className="mx-auto w-16 h-16 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full flex items-center justify-center mb-4">
-                <Gift className="w-8 h-8 text-purple-600" />
+              {/* Gift Icon & Title */}
+              <div className="flex items-center justify-center mb-3">
+                <div className="w-10 h-10 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full flex items-center justify-center mr-2">
+                  <Gift className="w-5 h-5 text-purple-600" />
+                </div>
+                <h2 className="text-xl font-bold text-gray-900">
+                  🎉 Surprise!
+                </h2>
               </div>
 
-              {/* Title */}
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                🎉 Surprise!
-              </h2>
-
               {/* Message */}
-              <div className="text-gray-700 mb-6 leading-relaxed">
-                <p className="mb-3">
-                  <strong>If you are a Product Manager</strong> and you want my portfolio, I&apos;ll give it to you! 
-                </p>
-                <p className="text-sm text-gray-600">
-                  I&apos;m passionate about building products that make a difference and would love to connect with fellow Product Managers.
+              <div className="text-gray-700 mb-4 text-sm">
+                <p className="mb-2">
+                  <strong>Product Manager?</strong> Want my portfolio? Let&apos;s connect!
                 </p>
               </div>
 
               {/* Name and Email Inputs */}
-              <div className="mb-6 space-y-4">
+              <div className="mb-4 space-y-3">
                 <div>
-                  <label htmlFor="user-name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Your Name *
-                  </label>
                   <input
                     type="text"
                     id="user-name"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
-                    placeholder="Enter your full name"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    placeholder="Your Name *"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="user-email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Your Email *
-                  </label>
                   <input
                     type="email"
                     id="user-email"
                     value={userEmail}
                     onChange={(e) => setUserEmail(e.target.value)}
-                    placeholder="Enter your email address"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    placeholder="Your Email *"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                     required
                   />
                 </div>
               </div>
 
               {/* Message Input */}
-              <div className="mb-6">
-                <label htmlFor="user-message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Tell me about yourself or what you&apos;re looking for:
-                </label>
+              <div className="mb-4">
                 <textarea
                   id="user-message"
                   value={userMessage}
                   onChange={(e) => setUserMessage(e.target.value)}
-                  placeholder="e.g., I'm a Product Manager at [Company] looking to connect..."
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none"
-                  rows={3}
+                  placeholder="Tell me about yourself (optional)..."
+                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none"
+                  rows={2}
                 />
-                <p className="text-xs text-gray-500 mt-1">
-                  Optional: Share your role, company, or specific interests
-                </p>
               </div>
 
               {/* Action Button */}
-              <div className="space-y-3">
+              <div className="mb-3">
                 <button
                   onClick={handleSendMessage}
                   disabled={isLoading}
-                  className="w-full bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center space-x-2"
+                  className="w-full bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-primary-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 flex items-center justify-center space-x-2"
                 >
                   {isLoading ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                       <span>Sending...</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5" />
+                      <Send className="w-4 h-4" />
                       <span>Send Message</span>
                     </>
                   )}
@@ -273,29 +258,24 @@ const GetSurprised = ({
 
               {/* Status Messages */}
               {sendStatus === 'success' && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
                   <div className="flex items-center space-x-2">
-                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                    <p className="text-sm text-green-700">
-                      Message sent successfully! I&apos;ll get back to you within 24 hours.
+                    <CheckCircle className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    <p className="text-xs text-green-700">
+                      Message sent! I&apos;ll get back to you within 24 hours.
                     </p>
                   </div>
                 </div>
               )}
 
               {sendStatus === 'error' && errorMessage && (
-                <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg">
                   <div className="flex items-center space-x-2">
-                    <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
-                    <p className="text-sm text-red-700">{errorMessage}</p>
+                    <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
+                    <p className="text-xs text-red-700">{errorMessage}</p>
                   </div>
                 </div>
               )}
-
-              {/* Footer */}
-              <p className="text-xs text-gray-500 mt-4">
-                Available for Product Management opportunities
-              </p>
             </div>
           </div>
         </div>
