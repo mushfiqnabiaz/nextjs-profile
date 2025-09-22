@@ -192,7 +192,7 @@ const GetSurprised = ({
               {/* Message */}
               <div className="text-gray-700 mb-4 text-sm">
                 <p className="mb-2">
-                  <strong>Product Manager?</strong> Want my portfolio? Let&apos;s connect!
+                  <strong>Product Manager?</strong> Want my portfolio design with code? Let&apos;s connect!
                 </p>
               </div>
 
