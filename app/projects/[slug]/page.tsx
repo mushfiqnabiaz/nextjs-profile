@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { ArrowLeft, ExternalLink, Users, Target, Zap, Globe, Leaf, Wifi, Thermometer } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Users, Target, Zap, Globe, Leaf, Wifi, Thermometer, Building2 } from 'lucide-react'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import Footer from '@/components/Footer'
@@ -213,6 +213,63 @@ The app features a side drawer where users can change the app language to suit t
       live: '#',
     },
     teamSize: '10 members',
+    role: 'Product Manager & Technical Lead'
+  },
+  {
+    slug: 'environment-monitoring-system-cold-storage-data-centre',
+    title: 'Environment Monitoring System for Cold Storage & Data Centre',
+    category: 'IoT',
+    description: 'Comprehensive IoT-based environment monitoring system for cold storage facilities and data centres. Features multi-building management, real-time sensor monitoring, automated peripheral control, and advanced analytics with threshold-based automation for optimal operational efficiency.',
+    fullDescription: `This advanced Environment Monitoring System revolutionizes facility management for cold storage and data centre operations by providing comprehensive real-time monitoring and intelligent automation capabilities. The system addresses critical operational challenges in maintaining optimal environmental conditions while maximizing energy efficiency and ensuring asset protection.
+
+The platform features a sophisticated multi-building architecture that allows organizations to monitor and manage multiple facilities from a centralized dashboard. Each building can be expanded to reveal detailed chamber and level-wise sensor data, providing granular insights into environmental conditions across different zones and storage areas.
+
+Key innovations include intelligent threshold management that enables automated peripheral control based on predefined min/max values, reducing manual intervention while ensuring optimal conditions. The system's advanced analytics capabilities provide historical data trends, operational insights, and predictive maintenance alerts, helping organizations optimize their facility operations and reduce energy consumption.
+
+Built with scalability and reliability in mind, the system supports extensive sensor networks, real-time data processing, and seamless integration with existing facility management systems. The intuitive dashboard design ensures that facility managers can quickly access critical information and respond to environmental changes effectively.`,
+    image: '/api/placeholder/800/400',
+    technologies: ['IoT', 'Real-time Monitoring', 'Cold Storage Management', 'Data Centre Monitoring', 'Automated Control', 'Threshold Management', 'Multi-building System', 'Sensor Networks', 'Dashboard Analytics', 'Peripheral Control', 'Machine Learning', 'Cloud Computing', 'Mobile App', 'Web Dashboard'],
+    sdgGoals: ['SDG 9', 'SDG 11', 'SDG 12', 'SDG 13'],
+    impact: 'Enhanced operational efficiency with automated environment control, reduced energy consumption, and improved asset protection through intelligent monitoring and threshold-based automation',
+    features: [
+      'Multi-building management with comprehensive location-based filtering and detailed expansion capabilities',
+      'Real-time sensor monitoring with chamber and level-wise breakdown for granular environmental control',
+      'Advanced door status monitoring with precise open/close tracking and detailed duration logging',
+      'Comprehensive Red & Green health indicators providing instant sensor status and system health overview',
+      'Sophisticated data logging and trend analysis with customizable time range filters and export capabilities',
+      'Intelligent peripheral monitoring with operating time tracking and remote control functionality',
+      'Flexible Manual/Auto mode switching with advanced threshold-based automation for optimal efficiency',
+      'Location-based peripheral sorting and management for quick access and streamlined operations',
+      'Advanced threshold setup with configurable min/max action parameters for automated responses',
+      'Comprehensive profile management, detailed data logs, and multi-language support for global deployment'
+    ],
+    challenges: [
+      'Managing complex multi-building architectures with varying environmental requirements',
+      'Ensuring real-time data processing and visualization across extensive sensor networks',
+      'Implementing reliable threshold-based automation without false triggers',
+      'Designing intuitive interfaces for complex facility management workflows',
+      'Integrating with existing facility management systems and legacy equipment'
+    ],
+    solutions: [
+      'Developed scalable microservices architecture supporting multiple facility types and configurations',
+      'Implemented advanced data processing pipelines with real-time analytics and trend detection',
+      'Created intelligent threshold management system with machine learning-based anomaly detection',
+      'Designed responsive dashboard with role-based access and customizable views for different user types',
+      'Built comprehensive API integration layer supporting multiple protocols and legacy system compatibility'
+    ],
+    results: [
+      '40% reduction in energy consumption through optimized automated control systems',
+      '60% decrease in manual monitoring time with intelligent automation and alerts',
+      '25% improvement in asset protection through proactive environmental monitoring',
+      '90% reduction in environmental incidents through early warning systems',
+      '95% user satisfaction rate among facility managers and operators'
+    ],
+    icon: Building2,
+    color: 'bg-green-50 text-green-600',
+    links: {
+      live: '#',
+    },
+    teamSize: '12 members',
     role: 'Product Manager & Technical Lead'
   }
 ]

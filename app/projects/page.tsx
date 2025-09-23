@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, ExternalLink, Leaf, Globe, Zap, Wifi, Thermometer } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Leaf, Globe, Zap, Wifi, Thermometer, Building2 } from 'lucide-react'
 import StructuredData from '@/components/StructuredData'
 import Footer from '@/components/Footer'
 
@@ -49,6 +49,21 @@ const projects = [
     color: 'bg-orange-50 text-orange-600',
     links: {
       live: 'https://play.google.com/store/apps/details?id=com.aqualink.polynet_greenhouse_mobile&hl=en'
+    }
+  },
+  {
+    slug: 'environment-monitoring-system-cold-storage-data-centre',
+    title: 'Environment Monitoring System for Cold Storage & Data Centre',
+    category: 'IoT',
+    description: 'Comprehensive IoT-based environment monitoring system for cold storage facilities and data centres. Features multi-building management, real-time sensor monitoring, automated peripheral control, and advanced analytics with threshold-based automation for optimal operational efficiency.',
+    image: '/api/placeholder/600/400',
+    technologies: ['IoT', 'Real-time Monitoring', 'Cold Storage Management', 'Data Centre Monitoring', 'Automated Control', 'Threshold Management', 'Multi-building System', 'Sensor Networks', 'Dashboard Analytics', 'Peripheral Control'],
+    sdgGoals: ['SDG 9', 'SDG 11', 'SDG 12', 'SDG 13'],
+    impact: 'Enhanced operational efficiency with automated environment control, reduced energy consumption, and improved asset protection through intelligent monitoring and threshold-based automation',
+    icon: Building2,
+    color: 'bg-green-50 text-green-600',
+    links: {
+      live: '#'
     }
   }
 ]
