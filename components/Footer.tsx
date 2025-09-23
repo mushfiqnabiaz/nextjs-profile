@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Heart, ArrowUp } from 'lucide-react'
+import { Heart, ArrowUp, Linkedin, Github, Facebook, Instagram, Mail, Phone } from 'lucide-react'
 import { useEffect } from 'react'
 
 // Extend Window interface for LinkedIn
@@ -96,21 +96,70 @@ const Footer = () => {
           
           <div>
             <h4 className="text-lg font-semibold mb-4">Connect with me</h4>
-            <div 
-              className="badge-base LI-profile-badge" 
-              data-locale="en_US" 
-              data-size="medium" 
-              data-theme="light" 
-              data-type="VERTICAL" 
-              data-vanity="mushfiqur-r" 
-              data-version="v1"
-            >
-              <a 
-                className="badge-base__link LI-simple-link" 
-                href="https://bd.linkedin.com/in/mushfiqur-r?trk=profile-badge"
+            
+            {/* Direct LinkedIn Connection */}
+            <div className="mb-6">
+              <a
+                href="https://www.linkedin.com/in/mushfiqur-r/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-200"
               >
+                <Linkedin className="w-5 h-5" />
+                <span>Connect on LinkedIn</span>
+              </a>
+            </div>
+
+            {/* Social Media Links */}
+            <div className="space-y-3">
+              <h5 className="text-sm font-medium text-gray-300 mb-3">Follow me on:</h5>
+              <div className="space-y-2">
+                <a
+                  href="https://github.com/mushfiqnabiaz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  <Github className="w-4 h-4" />
+                  <span className="text-sm">GitHub</span>
+                </a>
+                <a
+                  href="https://www.facebook.com/nabiazr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  <Facebook className="w-4 h-4" />
+                  <span className="text-sm">Facebook</span>
+                </a>
+                <a
+                  href="https://www.instagram.com/nabiaz_r/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200"
+                >
+                  <Instagram className="w-4 h-4" />
+                  <span className="text-sm">Instagram</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="mt-6 space-y-2">
+              <h5 className="text-sm font-medium text-gray-300 mb-3">Direct Contact:</h5>
+              <a
+                href="mailto:lets@meetmushfiq.com"
+                className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200"
+              >
+                <Mail className="w-4 h-4" />
+                <span className="text-sm">lets@meetmushfiq.com</span>
+              </a>
+              <a
+                href="tel:+8801601917109"
+                className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-200"
+              >
+                <Phone className="w-4 h-4" />
+                <span className="text-sm">+8801601917109</span>
               </a>
             </div>
           </div>

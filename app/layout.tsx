@@ -164,6 +164,13 @@ export default function RootLayout({
           `}
         </Script>
         
+        {/* LinkedIn Badge Script */}
+        <Script
+          src="https://platform.linkedin.com/badges/js/profile.js"
+          strategy="afterInteractive"
+          async
+        />
+        
         <AnimatedFavicon />
         <NavigationWrapper />
         <main role="main">{children}</main>
