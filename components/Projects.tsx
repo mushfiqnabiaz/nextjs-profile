@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ExternalLink, Heart, Leaf, Wifi, Stethoscope, Globe, Zap, Thermometer, Building2 } from 'lucide-react'
+import { ExternalLink, Heart, Leaf, Wifi, Stethoscope, Globe, Zap, Thermometer } from 'lucide-react'
 
 const Projects = () => {
   const ref = useRef(null)
@@ -75,32 +75,6 @@ const Projects = () => {
       color: "bg-orange-50 text-orange-600",
       links: {
         live: "https://play.google.com/store/apps/details?id=com.aqualink.polynet_greenhouse_mobile&hl=en"
-      }
-    },
-    {
-      title: "Environment Monitoring System for Cold Storage & Data Centre",
-      category: "IoT",
-      description: "Comprehensive IoT-based environment monitoring system for cold storage facilities and data centres. Features multi-building management, real-time sensor monitoring, automated peripheral control, and advanced analytics with threshold-based automation for optimal operational efficiency.",
-      image: "/api/placeholder/600/400",
-      technologies: ["IoT", "Real-time Monitoring", "Cold Storage Management", "Data Centre Monitoring", "Automated Control", "Threshold Management", "Multi-building System", "Sensor Networks", "Dashboard Analytics", "Peripheral Control"],
-      sdgGoals: ["SDG 9", "SDG 11", "SDG 12", "SDG 13"],
-      impact: "Enhanced operational efficiency with automated environment control, reduced energy consumption, and improved asset protection through intelligent monitoring and threshold-based automation",
-      features: [
-        "Multi-building management with location-based filtering and expansion",
-        "Real-time sensor monitoring with chamber and level-wise breakdown",
-        "Door status monitoring with open/close tracking and duration logs",
-        "Red & Green health indicators for comprehensive sensor status",
-        "Data logging and trend analysis with customizable time range filters",
-        "Peripheral monitoring with operating time tracking and control",
-        "Manual/Auto mode switching with threshold-based automation",
-        "Location-based peripheral sorting for quick access and management",
-        "Advanced threshold setup with min/max action configurations",
-        "Profile management, data logs, and multi-language support"
-      ],
-      icon: Building2,
-      color: "bg-green-50 text-green-600",
-      links: {
-        live: "#"
       }
     }
   ]
